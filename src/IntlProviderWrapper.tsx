@@ -172,6 +172,14 @@ type Messages = {
   editMenu: string
   visible: string
   scheduleMenu: string
+  addCategory: string
+  currency: string
+  shareMenu: string
+  menuDescription: string
+  addMenuItem: string
+  editMenuItem: string
+  cancel: string
+  save: string
 }
 
 const messagesInSlovak: Messages = {
@@ -360,7 +368,15 @@ const messagesInSlovak: Messages = {
   menuOverviewHeading: 'Prehľad menu',
   editMenu: 'Upraviť',
   visible: 'Viditeľné',
-  scheduleMenu: 'Rozvrh'
+  scheduleMenu: 'Rozvrh',
+  addCategory: 'Pridať kategóriu',
+  currency: 'Mena',
+  shareMenu: 'Zdieľať',
+  menuDescription: 'Popis',
+  addMenuItem: 'Nová položka',
+  editMenuItem: 'Upraviť',
+  cancel: 'Zrušiť',
+  save: 'Uložiť',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {

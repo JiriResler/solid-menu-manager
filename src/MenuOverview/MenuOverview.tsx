@@ -16,7 +16,6 @@ const MenuOverview: React.FC = () => {
 
   return (
     <div
-      className="position-relative"
       style={{ height: "100dvh", backgroundColor: "#FAFAFA" }}
     >
       <Container fluid>
