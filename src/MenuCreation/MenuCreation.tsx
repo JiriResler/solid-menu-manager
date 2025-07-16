@@ -8,7 +8,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import Navbar from "react-bootstrap/Navbar";
 
 /**
- * Displays the menu creation screen
+ * Displays the menu creation screen with controls to specify menu information.
  */
 const MenuCreation: React.FC = () => {
   const intl = useIntl();

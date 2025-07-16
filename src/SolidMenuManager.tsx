@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginSolid from "./LoginSolid/LoginSolid";
 import MenuOverview from "./MenuOverview/MenuOverview";
-import MenuCreation from "./MenuOverview/MenuCreation/MenuCreation";
+import MenuCreation from "./MenuCreation/MenuCreation";
 
 /**
  * Wraps the application in necessary components and defines its routes.

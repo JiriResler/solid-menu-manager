@@ -14,7 +14,7 @@ const providerNameAndUrls = {
 };
 
 /**
- * Displays the login screen
+ * Displays the login screen and handles user login to the selected Solid provider.
  */
 const LoginSolid: React.FC = () => {
   const intl = useIntl();
