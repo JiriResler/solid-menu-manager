@@ -169,6 +169,9 @@ type Messages = {
   profileLoading: string
   loadingProfileError: string
   menuOverviewHeading: string
+  editMenu: string
+  visible: string
+  scheduleMenu: string
 }
 
 const messagesInSlovak: Messages = {
@@ -355,6 +358,9 @@ const messagesInSlovak: Messages = {
   profileLoading: 'Načítanie profilu',
   loadingProfileError: 'Načítanie profilu sa skončilo chybou',
   menuOverviewHeading: 'Prehľad menu',
+  editMenu: 'Upraviť',
+  visible: 'Viditeľné',
+  scheduleMenu: 'Rozvrh'
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {

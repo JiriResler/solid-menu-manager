@@ -70,7 +70,7 @@ const LoginSolid: React.FC = () => {
 
       <div className="position-absolute bottom-0 start-0 ms-3 mb-3">
         <Form.Select
-          style={{borderColor: '#cccccc', height: '45px'}}
+          style={{ borderColor: "#cccccc", height: "45px" }}
           tabIndex={1}
         >
           <option key="en">English</option>

@@ -1,7 +1,6 @@
 import { SessionProvider } from "@inrupt/solid-ui-react";
 import IntlProviderWrapper from "./IntlProviderWrapper";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-import Container from "react-bootstrap/Container";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginSolid from "./LoginSolid/LoginSolid";
 import MenuOverview from "./MenuOverview/MenuOverview";
