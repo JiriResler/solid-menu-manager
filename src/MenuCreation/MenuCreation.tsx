@@ -19,9 +19,7 @@ const MenuCreation: React.FC = () => {
         <Row style={{ maxWidth: "700px", marginTop: "15px" }}>
           <Col xs={6}>
             <Stack style={{ width: "150px" }} gap={3}>
-              <div style={{ fontSize: "x-large", fontWeight: 700 }}>
-                Lunch Menu
-              </div>
+              <Form.Control value="Lunch Menu"/>
 
               <Button variant="secondary">
                 {intl.formatMessage({
@@ -88,7 +86,7 @@ const MenuCreation: React.FC = () => {
             />
           </Form.Label>
           <Col xs="9">
-            <Form.Control></Form.Control>
+            <Form.Control />
           </Col>
         </Form.Group>
       </Container>
@@ -98,11 +96,7 @@ const MenuCreation: React.FC = () => {
       <Container fluid>
         <Row style={{ maxWidth: "700px" }}>
           <Col xs={4}>
-            <div
-              style={{ fontSize: "large", fontWeight: "500", marginTop: "4px" }}
-            >
-              Main Courses
-            </div>
+            <Form.Control value="Main Courses"/>
           </Col>
 
           <Col xs={8}>
@@ -149,7 +143,7 @@ const MenuCreation: React.FC = () => {
 
         <Row style={{ maxWidth: "700px" }} className="align-items-center mt-2">
           <Col xs={4}>
-            <div style={{ marginLeft: "12px" }}>Carbonara</div>
+            <Form.Control value="Carbonara"/>
           </Col>
 
           <Col xs={8}>
