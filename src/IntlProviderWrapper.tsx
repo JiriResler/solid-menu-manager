@@ -168,6 +168,7 @@ type Messages = {
   profileSaveError: string
   profileLoading: string
   loadingProfileError: string
+  menuOverviewHeading: string
 }
 
 const messagesInSlovak: Messages = {
@@ -353,6 +354,7 @@ const messagesInSlovak: Messages = {
   profileSaveError: 'Profil sa nepodarilo uložiť',
   profileLoading: 'Načítanie profilu',
   loadingProfileError: 'Načítanie profilu sa skončilo chybou',
+  menuOverviewHeading: 'Prehľad menu',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {
