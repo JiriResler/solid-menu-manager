@@ -6,16 +6,30 @@ import Form from "react-bootstrap/Form";
 import { FormattedMessage } from "react-intl";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import type { FoodEstablishmentOutlet } from "../../menuOverviewTypes";
+
+type EditLocationProps = {
+  locations: FoodEstablishmentOutlet[] | undefined;
+  indexEditedLocation: number;
+};
 
 /**
  * Enables the user to specify location information.
  */
-const EditLocation: React.FC = () => {
+const EditLocation: React.FC<EditLocationProps> = ({
+  locations,
+  indexEditedLocation,
+}) => {
   return (
     <>
       <Container fluid>
         <Stack gap={3} className="mt-3">
-          <Form.Control value="Location" style={{ width: "150px" }} />
+          <Form.Control
+            value={
+              locations !== undefined ? locations[indexEditedLocation].name : ""
+            }
+            style={{ width: "150px" }}
+          />
 
           <Form.Group as={Row} controlId="locationAddressTextInput">
             <Form.Label column xs="4">
@@ -23,7 +37,13 @@ const EditLocation: React.FC = () => {
             </Form.Label>
 
             <Col xs="8">
-              <Form.Control />
+              <Form.Control
+                value={
+                  locations !== undefined
+                    ? locations[indexEditedLocation].address
+                    : ""
+                }
+              />
             </Col>
           </Form.Group>
 
@@ -36,7 +56,13 @@ const EditLocation: React.FC = () => {
             </Form.Label>
 
             <Col xs="8">
-              <Form.Control />
+              <Form.Control
+                value={
+                  locations !== undefined
+                    ? locations[indexEditedLocation].openingHours
+                    : ""
+                }
+              />
             </Col>
           </Form.Group>
         </Stack>

@@ -198,6 +198,12 @@ type Messages = {
   locationAddress: string
   openingHours: string
   switchLocation: string
+  locationSettings: string
+  currentLocation: string
+  manageLocations: string
+  add: string
+  edit: string
+  brandSettingsHeading: string
 }
 
 const messagesInSlovak: Messages = {
@@ -413,6 +419,12 @@ const messagesInSlovak: Messages = {
   locationAddress: 'Adresa',
   openingHours: 'Otváracie hodiny',
   switchLocation: 'Vybrať pobočku',
+  locationSettings: 'Nastavenia pobočiek',
+  currentLocation: 'Aktuálna pobočka',
+  manageLocations: 'Spravujte pobočky',
+  add: 'Pridať',
+  edit: 'Upraviť',
+  brandSettingsHeading: 'Vlastnosti značky',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {

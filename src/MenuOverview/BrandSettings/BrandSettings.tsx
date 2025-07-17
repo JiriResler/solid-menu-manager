@@ -6,17 +6,26 @@ import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import { FormattedMessage } from "react-intl";
+import type { Brand } from "../menuOverviewTypes";
+
+type BrandSettingsProps = {
+  brand: Brand | undefined;
+};
 
 /**
  * Allows the user to configure their brand settings.
  */
-const BrandSettings: React.FC = () => {
+const BrandSettings: React.FC<BrandSettingsProps> = ({ brand }) => {
   return (
     <>
       <div className="text-center mt-3">
         <img
-          src="images/lasagna.png"
-          alt="Lasagna"
+          src={
+            brand?.logo !== ""
+              ? brand?.logo
+              : "images/menu-item-default-picture.svg"
+          }
+          alt="Brand logo"
           style={{ maxWidth: "300px", maxHeight: "125px", borderRadius: "4%" }}
         />
       </div>
@@ -25,7 +34,7 @@ const BrandSettings: React.FC = () => {
         <Stack gap={3}>
           <Row>
             <Col xs={5}>
-              <Form.Control value="Brand" />
+              <Form.Control value={brand?.name} />
             </Col>
 
             <Col xs={4}>
@@ -47,51 +56,9 @@ const BrandSettings: React.FC = () => {
             </Form.Label>
 
             <Col xs="8">
-              <Form.Control />
+              <Form.Control value={brand?.slogan} />
             </Col>
           </Form.Group>
-
-          <Row className="align-items-center">
-            <Col>
-              <div style={{ fontSize: "large", fontWeight: 500 }}>
-                <FormattedMessage id="locations" defaultMessage="Locations" />
-              </div>
-            </Col>
-
-            <Col className="text-end">
-              <Button variant="secondary">
-                <FormattedMessage
-                  id="addLocation"
-                  defaultMessage="Add location"
-                />
-              </Button>
-            </Col>
-          </Row>
-
-          <Row className="align-items-center">
-            <Col xs={6}>
-              <Form.Control value="Name" />
-            </Col>
-
-            <Col xs={3}>
-              <Button variant="secondary">
-                <FormattedMessage id="editLocation" defaultMessage="Edit" />
-              </Button>
-            </Col>
-
-            <Col xs={3}>
-              <button
-                style={{ background: "none", border: "none" }}
-                aria-label="Delete category"
-              >
-                <img
-                  src="images/trash.svg"
-                  alt="Trash"
-                  style={{ width: "30px" }}
-                />
-              </button>
-            </Col>
-          </Row>
         </Stack>
       </Container>
 

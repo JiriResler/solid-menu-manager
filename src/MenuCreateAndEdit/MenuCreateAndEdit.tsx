@@ -31,7 +31,7 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
     const menuEdited =
       brandData?.outlets[indexSelectedLocation].menus[indexSelectedMenu];
 
-    const [menuItemIsBeingEdited, setMenuItemIsBeingEdited] = useState(true);
+    const [menuItemIsBeingEdited, setMenuItemIsBeingEdited] = useState(false);
 
     const [indexSelectedCategory, setIndexSelectedCategory] = useState(0);
 

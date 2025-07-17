@@ -6,7 +6,7 @@ export type Brand = {
   outlets: FoodEstablishmentOutlet[];
 };
 
-type FoodEstablishmentOutlet = {
+export type FoodEstablishmentOutlet = {
   iri: string;
   name: string;
   address: string;
