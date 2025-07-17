@@ -1,10 +1,12 @@
 export type Brand = {
-  logo: string;
   name: string;
+  logo: string;
+  slogan: string;
   outlets: FoodEstablishmentOutlet[];
 };
 
 type FoodEstablishmentOutlet = {
+  name: string;
   address: string;
   openingHours: string;
   menus: Menu[];

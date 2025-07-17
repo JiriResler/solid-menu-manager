@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 /**
  * Allows the user to configure their brand settings.
@@ -40,6 +40,16 @@ const BrandSettings: React.FC = () => {
             </Col>
           </Row>
 
+          <Form.Group as={Row} controlId="brandSloganTextInput">
+            <Form.Label column xs="4">
+              Slogan
+            </Form.Label>
+
+            <Col xs="8">
+              <Form.Control />
+            </Col>
+          </Form.Group>
+
           <Row className="align-items-center">
             <Col>
               <div style={{ fontSize: "large", fontWeight: 500 }}>
@@ -61,7 +71,7 @@ const BrandSettings: React.FC = () => {
             <Col xs={6}>
               <Form.Control value="Name" />
             </Col>
-            
+
             <Col xs={3}>
               <Button variant="secondary">
                 <FormattedMessage id="editLocation" defaultMessage="Edit" />

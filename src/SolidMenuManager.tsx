@@ -7,6 +7,7 @@ import MenuOverview from "./MenuOverview/MenuOverview";
 import MenuCreation from "./MenuCreation/MenuCreation";
 import EditMenuItem from "./MenuCreation/EditMenuItem/EditMenuItem";
 import BrandSettings from "./MenuOverview/BrandSettings/BrandSettings";
+import EditLocation from "./MenuOverview/BrandSettings/EditLocation/EditLocation";
 
 /**
  * Wraps the application in necessary components and defines its routes.
@@ -30,6 +31,7 @@ const SolidMenuManager: React.FC = () => {
               <Route path="/menuCreation" element={<MenuCreation />} />
               <Route path="/editMenuItem" element={<EditMenuItem />} />
               <Route path="/brandSettings" element={<BrandSettings />} />
+              <Route path="/editLocation" element={<EditLocation />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>

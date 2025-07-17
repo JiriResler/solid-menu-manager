@@ -196,6 +196,8 @@ type Messages = {
   locations: string
   addLocation: string
   editLocation: string
+  locationAddress: string
+  openingHours: string
 }
 
 const messagesInSlovak: Messages = {
@@ -409,6 +411,8 @@ const messagesInSlovak: Messages = {
   locations: 'Pobočky',
   addLocation: 'Pridať pobočku',
   editLocation: 'Upraviť',
+  locationAddress: 'Adresa',
+  openingHours: 'Otváracie hodiny',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {
