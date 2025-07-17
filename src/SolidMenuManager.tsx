@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginSolid from "./LoginSolid/LoginSolid";
 import MenuOverview from "./MenuOverview/MenuOverview";
 import MenuCreation from "./MenuCreation/MenuCreation";
+import EditMenuItem from "./MenuCreation/EditMenuItem/EditMenuItem";
 
 /**
  * Wraps the application in necessary components and defines its routes.
@@ -26,6 +27,7 @@ const SolidMenuManager: React.FC = () => {
               <Route path="/login" element={<LoginSolid />} />
               <Route path="/menuOverview" element={<MenuOverview />} />
               <Route path="/menuCreation" element={<MenuCreation />} />
+              <Route path="/editMenuItem" element={<EditMenuItem />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>

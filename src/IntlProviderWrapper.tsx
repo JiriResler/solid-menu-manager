@@ -180,6 +180,16 @@ type Messages = {
   editMenuItem: string
   cancel: string
   save: string
+  addImage: string
+  removeImage: string
+  allergens: string
+  suitableForDiets: string
+  ingredients: string
+  servingSize: string
+  calories: string
+  nationalCuisines: string
+  cookingMethods: string
+  spicinessLevel: string
 }
 
 const messagesInSlovak: Messages = {
@@ -377,6 +387,16 @@ const messagesInSlovak: Messages = {
   editMenuItem: 'Upraviť',
   cancel: 'Zrušiť',
   save: 'Uložiť',
+  addImage: 'Pridať obrázok',
+  removeImage: 'Odstrániť obrázok',
+  allergens: 'Alergény',
+  suitableForDiets: 'Vhodné pre diéty',
+  ingredients: 'Ingrediencie',
+  servingSize: 'Veľkosť porcie',
+  calories: 'Kalórie',
+  nationalCuisines: 'Národné kuchyne',
+  cookingMethods: 'Spôsoby prípravy',
+  spicinessLevel: 'Úroveň ostrosti',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {

@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Stack from 'react-bootstrap/Stack'
 
 /**
- * Displays existing menus
+ * Loads and displays existing menus found in a Solid Pod.
  */
 const MenuOverview: React.FC = () => {
   const intl = useIntl();
