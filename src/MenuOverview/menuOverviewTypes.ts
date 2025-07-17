@@ -12,7 +12,7 @@ type FoodEstablishmentOutlet = {
   menus: Menu[];
 };
 
-type Menu = {
+export type Menu = {
   title: string;
   availability: string;
   description: string;

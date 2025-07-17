@@ -168,7 +168,6 @@ type Messages = {
   profileSaveError: string
   profileLoading: string
   loadingProfileError: string
-  menuOverviewHeading: string
   editMenu: string
   visible: string
   scheduleMenu: string
@@ -198,6 +197,7 @@ type Messages = {
   editLocation: string
   locationAddress: string
   openingHours: string
+  switchLocation: string
 }
 
 const messagesInSlovak: Messages = {
@@ -383,7 +383,6 @@ const messagesInSlovak: Messages = {
   profileSaveError: 'Profil sa nepodarilo uložiť',
   profileLoading: 'Načítanie profilu',
   loadingProfileError: 'Načítanie profilu sa skončilo chybou',
-  menuOverviewHeading: 'Prehľad menu',
   editMenu: 'Upraviť',
   visible: 'Viditeľné',
   scheduleMenu: 'Rozvrh',
@@ -413,6 +412,7 @@ const messagesInSlovak: Messages = {
   editLocation: 'Upraviť',
   locationAddress: 'Adresa',
   openingHours: 'Otváracie hodiny',
+  switchLocation: 'Vybrať pobočku',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {

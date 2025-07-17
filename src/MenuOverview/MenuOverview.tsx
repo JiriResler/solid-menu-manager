@@ -8,8 +8,10 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import { useQuery } from "@tanstack/react-query";
-import type { Brand } from "./menuOverviewTypes";
+import type { Brand, Menu } from "./menuOverviewTypes";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { useState } from "react";
+import Navbar from "react-bootstrap/Navbar";
 
 /**
  * Loads and displays existing menus found in a Solid Pod.
@@ -17,7 +19,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 const MenuOverview: React.FC = () => {
   const intl = useIntl();
 
-  const menuDataQuery = useQuery({
+  const [selectedLocationIndex, setSelectedLocationIndex] = useState(1);
+
+  const brandDataQuery = useQuery({
     queryKey: ["getMenuDataFromSolidPod"],
     queryFn: fetchMenuData,
   });
@@ -172,6 +176,195 @@ const MenuOverview: React.FC = () => {
                 },
               ],
             },
+            {
+              title: "Evening Menu",
+              availability: "17:00–20:00",
+              description:
+                "Nordic-inspired plant-forward dishes for conscious diners.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Plates",
+                  menuItems: [
+                    {
+                      title: "Roasted Root Vegetable Plate",
+                      description:
+                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
+                      visibility: true,
+                      price: 11.2,
+                      image: "https://example.com/images/root-plate.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "carrots",
+                        "beets",
+                        "parsnips",
+                        "dill oil",
+                        "oat yogurt",
+                      ],
+                      servingSize: 320,
+                      calories: 510,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["roasted"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+                {
+                  title: "Soups",
+                  menuItems: [
+                    {
+                      title: "Creamy Celeriac Soup",
+                      description:
+                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
+                      visibility: true,
+                      price: 6.5,
+                      image: "https://example.com/images/celeriac-soup.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "celeriac",
+                        "potato",
+                        "herb oil",
+                        "pumpkin seeds",
+                      ],
+                      servingSize: 300,
+                      calories: 430,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["blended", "boiled"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: "Evening Menu",
+              availability: "17:00–20:00",
+              description:
+                "Nordic-inspired plant-forward dishes for conscious diners.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Plates",
+                  menuItems: [
+                    {
+                      title: "Roasted Root Vegetable Plate",
+                      description:
+                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
+                      visibility: true,
+                      price: 11.2,
+                      image: "https://example.com/images/root-plate.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "carrots",
+                        "beets",
+                        "parsnips",
+                        "dill oil",
+                        "oat yogurt",
+                      ],
+                      servingSize: 320,
+                      calories: 510,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["roasted"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+                {
+                  title: "Soups",
+                  menuItems: [
+                    {
+                      title: "Creamy Celeriac Soup",
+                      description:
+                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
+                      visibility: true,
+                      price: 6.5,
+                      image: "https://example.com/images/celeriac-soup.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "celeriac",
+                        "potato",
+                        "herb oil",
+                        "pumpkin seeds",
+                      ],
+                      servingSize: 300,
+                      calories: 430,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["blended", "boiled"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: "Evening Menu",
+              availability: "17:00–20:00",
+              description:
+                "Nordic-inspired plant-forward dishes for conscious diners.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Plates",
+                  menuItems: [
+                    {
+                      title: "Roasted Root Vegetable Plate",
+                      description:
+                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
+                      visibility: true,
+                      price: 11.2,
+                      image: "https://example.com/images/root-plate.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "carrots",
+                        "beets",
+                        "parsnips",
+                        "dill oil",
+                        "oat yogurt",
+                      ],
+                      servingSize: 320,
+                      calories: 510,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["roasted"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+                {
+                  title: "Soups",
+                  menuItems: [
+                    {
+                      title: "Creamy Celeriac Soup",
+                      description:
+                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
+                      visibility: true,
+                      price: 6.5,
+                      image: "https://example.com/images/celeriac-soup.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "celeriac",
+                        "potato",
+                        "herb oil",
+                        "pumpkin seeds",
+                      ],
+                      servingSize: 300,
+                      calories: 430,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["blended", "boiled"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],
@@ -188,6 +381,21 @@ const MenuOverview: React.FC = () => {
             <FormattedMessage id="settings" defaultMessage="Settings" />
           </Offcanvas.Title>
         </Offcanvas.Header>
+
+        <button className="offcanvas-item-button text-start position-relative">
+          <img
+            src="images/geo-alt.svg"
+            alt="Location settings"
+            className="offcanvas-item-button-icon position-absolute"
+          />
+
+          <span className="ms-5">
+            <FormattedMessage
+              id="switchLocation"
+              defaultMessage="Switch location"
+            />
+          </span>
+        </button>
 
         <button className="offcanvas-item-button text-start position-relative">
           <img
@@ -217,19 +425,16 @@ const MenuOverview: React.FC = () => {
         </button>
       </Offcanvas>
 
-      <Container fluid>
-        <Row
-          className="sticky-top align-items-center"
-          style={{ backgroundColor: "#7C4DFF", height: "86px" }}
-        >
-          <Col className="ms-3" xs={8}>
+      <Navbar
+        sticky="top"
+        style={{ backgroundColor: "#7C4DFF", minHeight: '75px' }}
+      >
+        <Row className="w-100 align-items-center">
+          <Col xs={9}>
             <span
-              style={{ color: "white", fontSize: "x-large", fontWeight: 500 }}
+              style={{ color: "white", fontSize: "x-large", fontWeight: 500, marginLeft: '20px' }}
             >
-              <FormattedMessage
-                id="menuOverviewHeading"
-                defaultMessage="Menu overview"
-              />
+              {brandDataQuery.data?.outlets[selectedLocationIndex].name}
             </span>
           </Col>
 
@@ -246,146 +451,77 @@ const MenuOverview: React.FC = () => {
             </button>
           </Col>
         </Row>
-      </Container>
+      </Navbar>
 
       <Stack gap={3} className="ps-3 pe-3 mt-3">
-        <Card style={{ maxWidth: "470px", height: "160px" }}>
-          <Card.Body>
-            <Row>
-              <Col xs={9}>
-                <div style={{ fontSize: "large", fontWeight: 700 }}>
-                  A la Carte Menu
-                </div>
+        {brandDataQuery.data?.outlets[selectedLocationIndex].menus.map(
+          (menu: Menu) => {
+            return (
+              <Card style={{ maxWidth: "470px" }}>
+                <Card.Body>
+                  <Container>
+                    <Stack gap={3}>
+                      <Row>
+                        <Col xs={7}>
+                          <div style={{ fontWeight: 700 }}>{menu.title}</div>
+                        </Col>
 
-                <div className="mt-2">
-                  <img
-                    src="images/calendar-week.svg"
-                    alt="Calendar icon"
-                    style={{ width: "22px" }}
-                  />
-                  <span className="text-muted ms-3" style={{ fontWeight: 500 }}>
-                    Monday - Friday
-                  </span>
-                </div>
+                        <Col>
+                          <Form.Switch
+                            reverse
+                            label={intl.formatMessage({
+                              id: "visible",
+                              defaultMessage: "Visible",
+                            })}
+                            checked={menu.visibility}
+                          />
+                        </Col>
+                      </Row>
 
-                <Button variant="secondary" className="mt-4">
-                  <FormattedMessage id="editMenu" defaultMessage="Edit" />
-                </Button>
-              </Col>
+                      <Row>
+                        <Col>
+                          <div>
+                            <img
+                              src="images/calendar-week.svg"
+                              alt="Calendar icon"
+                              style={{ width: "20px" }}
+                            />
+                            <span
+                              className="text-muted ms-2"
+                              style={{ fontWeight: 500 }}
+                            >
+                              {menu.availability}
+                            </span>
+                          </div>
+                        </Col>
+                      </Row>
 
-              <Col xs={3} className="text-end">
-                <Form.Switch
-                  reverse
-                  label={intl.formatMessage({
-                    id: "visible",
-                    defaultMessage: "Visible",
-                  })}
-                />
-                <Button
-                  variant="secondary"
-                  style={{ marginTop: "43pt", marginRight: "4pt" }}
-                >
-                  {intl.formatMessage({
-                    id: "scheduleMenu",
-                    defaultMessage: "Schedule",
-                  })}
-                </Button>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
+                      <Row>
+                        <Col>
+                          <Button variant="secondary">
+                            <FormattedMessage
+                              id="editMenu"
+                              defaultMessage="Edit"
+                            />
+                          </Button>
+                        </Col>
 
-        <Card style={{ maxWidth: "470px", height: "160px" }}>
-          <Card.Body>
-            <Row>
-              <Col xs={9}>
-                <div style={{ fontSize: "large", fontWeight: 700 }}>
-                  Weekend Menu
-                </div>
-
-                <div className="mt-2">
-                  <img
-                    src="images/calendar-week.svg"
-                    alt="Calendar icon"
-                    style={{ width: "22px" }}
-                  />
-                  <span className="text-muted ms-3" style={{ fontWeight: 500 }}>
-                    Saturday, Sunday
-                  </span>
-                </div>
-
-                <Button variant="secondary" className="mt-4">
-                  <FormattedMessage id="editMenu" defaultMessage="Edit" />
-                </Button>
-              </Col>
-
-              <Col xs={3} className="text-end">
-                <Form.Switch
-                  reverse
-                  label={intl.formatMessage({
-                    id: "visible",
-                    defaultMessage: "Visible",
-                  })}
-                />
-                <Button
-                  variant="secondary"
-                  style={{ marginTop: "43pt", marginRight: "4pt" }}
-                >
-                  {intl.formatMessage({
-                    id: "scheduleMenu",
-                    defaultMessage: "Schedule",
-                  })}
-                </Button>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-
-        <Card style={{ maxWidth: "470px", height: "160px" }}>
-          <Card.Body>
-            <Row>
-              <Col xs={9}>
-                <div style={{ fontSize: "large", fontWeight: 700 }}>
-                  Lunch Menu
-                </div>
-
-                <div className="mt-2">
-                  <img
-                    src="images/calendar-week.svg"
-                    alt="Calendar icon"
-                    style={{ width: "22px" }}
-                  />
-                  <span className="text-muted ms-3" style={{ fontWeight: 500 }}>
-                    Daily, 11:00 AM - 3:00 PM
-                  </span>
-                </div>
-
-                <Button variant="secondary" className="mt-4">
-                  <FormattedMessage id="editMenu" defaultMessage="Edit" />
-                </Button>
-              </Col>
-
-              <Col xs={3} className="text-end">
-                <Form.Switch
-                  reverse
-                  label={intl.formatMessage({
-                    id: "visible",
-                    defaultMessage: "Visible",
-                  })}
-                />
-                <Button
-                  variant="secondary"
-                  style={{ marginTop: "43pt", marginRight: "4pt" }}
-                >
-                  {intl.formatMessage({
-                    id: "scheduleMenu",
-                    defaultMessage: "Schedule",
-                  })}
-                </Button>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
+                        <Col className="text-end">
+                          <Button variant="secondary">
+                            {intl.formatMessage({
+                              id: "scheduleMenu",
+                              defaultMessage: "Schedule",
+                            })}
+                          </Button>
+                        </Col>
+                      </Row>
+                    </Stack>
+                  </Container>
+                </Card.Body>
+              </Card>
+            );
+          }
+        )}
       </Stack>
 
       <Button className="position-absolute position-fixed bottom-0 end-0 mb-4 me-4 add-menu-round-button shadow">
