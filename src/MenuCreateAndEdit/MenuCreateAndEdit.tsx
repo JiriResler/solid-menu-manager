@@ -13,8 +13,9 @@ import EditMenuItem from "./EditMenuItem/EditMenuItem";
 
 type MenuCreateAndEditProps = {
   brandData: Brand | undefined;
-  indexSelectedMenu: number;
-  indexSelectedLocation: number;
+  indexEditedMenu: number;
+  indexEditedLocation: number;
+  setMenuIsBeingEdited: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 /**
@@ -22,31 +23,32 @@ type MenuCreateAndEditProps = {
  */
 const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
   brandData,
-  indexSelectedMenu,
-  indexSelectedLocation,
+  indexEditedMenu,
+  indexEditedLocation,
+  setMenuIsBeingEdited,
 }) => {
   const MenuCreationScreenContent: React.FC = () => {
     const intl = useIntl();
 
     const menuEdited =
-      brandData?.outlets[indexSelectedLocation].menus[indexSelectedMenu];
+      brandData?.outlets[indexEditedLocation].menus[indexEditedMenu];
 
     const [menuItemIsBeingEdited, setMenuItemIsBeingEdited] = useState(false);
 
-    const [indexSelectedCategory, setIndexSelectedCategory] = useState(0);
+    const [indexEditedCategory, setIndexEditedCategory] = useState(0);
 
-    const [indexSelectedMenuItem, setIndexSelectedMenuItem] = useState(0);
-    
+    const [indexEditedMenuItem, setIndexEditedMenuItem] = useState(0);
 
     if (menuItemIsBeingEdited) {
-    return (
-      <EditMenuItem
-        menuEdited={menuEdited}
-        indexSelectedCategory={indexSelectedCategory}
-        indexSelectedMenuItem={indexSelectedMenuItem}
-      />
-    );
-  }
+      return (
+        <EditMenuItem
+          menuEdited={menuEdited}
+          indexEditedCategory={indexEditedCategory}
+          indexEditedMenuItem={indexEditedMenuItem}
+          setMenuItemIsBeingEdited={setMenuItemIsBeingEdited}
+        />
+      );
+    }
 
     return (
       <>
@@ -141,7 +143,9 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
         <hr />
 
         <Container fluid>
-          {menuEdited?.categories.map((category) => {
+          {menuEdited?.categories.map((category, index) => {
+            const categoryIndex = index;
+
             return (
               <div className="mb-4">
                 <Row>
@@ -195,6 +199,8 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
                 </Row>
 
                 {category.menuItems.map((menuItem, index) => {
+                  const menuItemIndex = index;
+
                   return (
                     <Row className="align-items-center mt-2">
                       <Col xs={4}>
@@ -203,7 +209,7 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
                           controlId="menuDescriptionTextInput"
                         >
                           <Form.Label column xs="2">
-                            {index + 1}.
+                            {menuItemIndex + 1}.
                           </Form.Label>
 
                           <Col xs="9">
@@ -214,7 +220,15 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
 
                       <Col xs={8}>
                         <Stack direction="horizontal" gap={2}>
-                          <Button variant="secondary" className="ms-auto">
+                          <Button
+                            variant="secondary"
+                            className="ms-auto"
+                            onClick={() => {
+                              setIndexEditedCategory(categoryIndex);
+                              setIndexEditedMenuItem(menuItemIndex);
+                              setMenuItemIsBeingEdited(true);
+                            }}
+                          >
                             <FormattedMessage
                               id="editMenuItem"
                               defaultMessage="Edit"
@@ -269,7 +283,12 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
 
         <Navbar sticky="bottom">
           <Container>
-            <Button variant="secondary">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setMenuIsBeingEdited(false);
+              }}
+            >
               <FormattedMessage id="cancel" defaultMessage="Cancel" />
             </Button>
             <Navbar.Collapse className="justify-content-end">

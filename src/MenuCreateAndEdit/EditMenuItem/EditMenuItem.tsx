@@ -11,8 +11,9 @@ import type { Menu } from "../../MenuOverview/menuOverviewTypes";
 
 type EditMenuItemProps = {
   menuEdited: Menu | undefined;
-  indexSelectedCategory: number;
-  indexSelectedMenuItem: number;
+  indexEditedCategory: number;
+  indexEditedMenuItem: number;
+  setMenuItemIsBeingEdited: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 /**
@@ -20,15 +21,14 @@ type EditMenuItemProps = {
  */
 const EditMenuItem: React.FC<EditMenuItemProps> = ({
   menuEdited,
-  indexSelectedMenuItem,
-  indexSelectedCategory,
+  indexEditedMenuItem,
+  indexEditedCategory,
+  setMenuItemIsBeingEdited,
 }) => {
   const intl = useIntl();
 
   const menuItemEdited =
-    menuEdited?.categories[indexSelectedCategory].menuItems[
-      indexSelectedMenuItem
-    ];
+    menuEdited?.categories[indexEditedCategory].menuItems[indexEditedMenuItem];
 
   return (
     <>
@@ -45,22 +45,13 @@ const EditMenuItem: React.FC<EditMenuItemProps> = ({
       </div>
 
       <Container fluid>
-        <Row style={{ maxWidth: "700px", marginTop: "15px" }}>
-          <Col xs={6}>
-            <Stack style={{ width: "150px" }} gap={3}>
+        <Stack gap={3} className="mt-3">
+          <Row>
+            <Col>
               <Form.Control value={menuItemEdited?.title} />
+            </Col>
 
-              <Button variant="secondary">
-                {intl.formatMessage({
-                  id: "addImage",
-                  defaultMessage: "Add image",
-                })}
-              </Button>
-            </Stack>
-          </Col>
-
-          <Col xs={6}>
-            <Stack gap={3} style={{ marginTop: "8px", maxWidth: "200px" }}>
+            <Col>
               <Form.Switch
                 reverse
                 label={intl.formatMessage({
@@ -69,7 +60,20 @@ const EditMenuItem: React.FC<EditMenuItemProps> = ({
                 })}
                 checked={menuItemEdited?.visibility}
               />
+            </Col>
+          </Row>
 
+          <Row>
+            <Col>
+              <Button variant="secondary">
+                {intl.formatMessage({
+                  id: "addImage",
+                  defaultMessage: "Add image",
+                })}
+              </Button>
+            </Col>
+
+            <Col className="text-end">
               <Button
                 variant="secondary"
                 style={{ width: "150px", marginLeft: "30px", marginTop: "4px" }}
@@ -79,25 +83,22 @@ const EditMenuItem: React.FC<EditMenuItemProps> = ({
                   defaultMessage="Remove image"
                 />
               </Button>
-            </Stack>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
 
-        <Form.Group
-          as={Row}
-          controlId="menuDescriptionTextInput"
-          style={{ maxWidth: "560px", marginTop: "20px" }}
-        >
-          <Form.Label column xs="3">
-            <FormattedMessage
-              id="menuDescription"
-              defaultMessage="Description"
-            />
-          </Form.Label>
-          <Col xs="9">
-            <Form.Control value={menuItemEdited?.description} />
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} controlId="menuDescriptionTextInput">
+            <Form.Label column xs="3">
+              <FormattedMessage
+                id="menuDescription"
+                defaultMessage="Description"
+              />
+            </Form.Label>
+
+            <Col xs="9">
+              <Form.Control value={menuItemEdited?.description} />
+            </Col>
+          </Form.Group>
+        </Stack>
       </Container>
 
       <hr />
@@ -289,7 +290,12 @@ const EditMenuItem: React.FC<EditMenuItemProps> = ({
 
       <Navbar sticky="bottom">
         <Container>
-          <Button variant="secondary">
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setMenuItemIsBeingEdited(false);
+            }}
+          >
             <FormattedMessage id="cancel" defaultMessage="Cancel" />
           </Button>
           <Navbar.Collapse className="justify-content-end">

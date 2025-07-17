@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import { useQuery } from "@tanstack/react-query";
-import type { Brand, Menu } from "./menuOverviewTypes";
+import type { Brand } from "./menuOverviewTypes";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
@@ -26,15 +26,19 @@ const MenuOverview: React.FC = () => {
 
   const [menuIsBeingEdited, setMenuIsBeingEdited] = useState(false);
 
-  const [indexEditedMenu, setIndexSelectedMenu] = useState(0);
+  const [indexEditedMenu, setIndexEditedMenu] = useState(0);
+
+  const [showLocations, setShowLocations] = useState(false);
 
   const [locationIsBeingEdited, setLocationIsBeingEdited] = useState(false);
 
-  const [indexCurrentLocation, setIndexCurrentLocation] = useState(0);
+  const [indexCurrentLocation] = useState(0);
 
   const [indexEditedLocation, setIndexEditedLocation] = useState(0);
 
   const [brandIsBeingEdited, setBrandIsBeingEdited] = useState(false);
+
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
 
   const brandDataQuery = useQuery({
     queryKey: ["getMenuDataFromSolidPod"],
@@ -46,123 +50,47 @@ const MenuOverview: React.FC = () => {
    */
   async function fetchMenuData() {
     const mockedBrand: Brand = {
-      iri: "https://example.com/brand/greenfork",
-      name: "GreenFork",
-      logo: "https://example.com/logos/greenfork-logo.png",
-      slogan: "Fresh. Local. Conscious.",
+      iri: "https://example.com/brand/farm-table",
+      name: "Farm & Table",
+      logo: "",
+      slogan: "From local fields to your plate.",
       outlets: [
         {
-          iri: "https://example.com/outlet/amsterdam",
-          name: "GreenFork Amsterdam",
-          address: "Prinsengracht 267, 1016 GV Amsterdam, Netherlands",
-          openingHours: "Mon–Fri 09:00–17:00",
+          iri: "https://example.com/outlet/berlin-mitte",
+          name: "Farm & Table – Berlin Mitte",
+          address: "Friedrichstraße 120, 10117 Berlin, Germany",
+          openingHours: "Mon–Sun 08:00–22:00",
           menus: [
             {
-              iri: "https://example.com/menu/weekday-lunch",
-              title: "Weekday Lunch Menu",
+              iri: "https://example.com/menu/lunch",
+              title: "Lunch Menu",
               availability: "Mon–Fri 11:00–15:00",
-              description:
-                "Fresh, seasonal lunch options designed for balance and flavor.",
+              description: "Fresh and balanced dishes to power your workday.",
               visibility: true,
               currency: "EUR",
               categories: [
                 {
-                  iri: "https://example.com/menu-category/grain-bowls",
-                  title: "Grain Bowls",
+                  iri: "https://example.com/menu-category/soups",
+                  title: "Soups",
                   menuItems: [
                     {
-                      iri: "https://example.com/menu-item/miso-quinoa-bowl",
-                      title: "Miso Quinoa Bowl",
+                      iri: "https://example.com/menu-item/tomato-soup",
+                      title: "Roasted Tomato Soup",
                       description:
-                        "Warm quinoa, miso-roasted aubergine, edamame, carrots, sesame dressing.",
+                        "Slow-roasted tomatoes with basil oil and toasted rye.",
                       visibility: true,
-                      price: 9.9,
+                      price: 6.5,
                       image: "",
                       allergens: [
                         {
-                          label: "Soy",
-                          iri: "http://example.com/allergen/soy",
-                        },
-                        {
-                          label: "Sesame",
-                          iri: "http://example.com/allergen/sesame",
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
                         },
                       ],
                       suitableForDiets: [
                         {
                           label: "Vegan",
                           iri: "http://example.com/diet/vegan",
-                        },
-                      ],
-                      ingredients: [
-                        {
-                          label: "Quinoa",
-                          iri: "http://example.com/ingredient/quinoa",
-                        },
-                        {
-                          label: "Aubergine",
-                          iri: "http://example.com/ingredient/aubergine",
-                        },
-                        {
-                          label: "Miso",
-                          iri: "http://example.com/ingredient/miso",
-                        },
-                        {
-                          label: "Carrot",
-                          iri: "http://example.com/ingredient/carrot",
-                        },
-                        {
-                          label: "Edamame",
-                          iri: "http://example.com/ingredient/edamame",
-                        },
-                        {
-                          label: "Sesame dressing",
-                          iri: "http://example.com/ingredient/sesame-dressing",
-                        },
-                      ],
-                      servingSize: 350,
-                      calories: 610,
-                      nationalCuisines: [
-                        {
-                          label: "Japanese",
-                          iri: "http://example.com/cuisine/japanese",
-                        },
-                      ],
-                      preparationMethods: [
-                        {
-                          label: "Roasted",
-                          iri: "http://example.com/prep/roasted",
-                        },
-                        {
-                          label: "Cold-assembled",
-                          iri: "http://example.com/prep/cold-assembled",
-                        },
-                      ],
-                      spicinessLevel: "Mild",
-                    },
-                  ],
-                },
-                {
-                  iri: "https://example.com/menu-category/soups",
-                  title: "Soups",
-                  menuItems: [
-                    {
-                      iri: "https://example.com/menu-item/tomato-basil-soup",
-                      title: "Tomato Basil Soup",
-                      description:
-                        "Classic tomato soup with a hint of garlic and fresh basil.",
-                      visibility: true,
-                      price: 5.5,
-                      image: "https://example.com/images/tomato-soup.jpg",
-                      allergens: [],
-                      suitableForDiets: [
-                        {
-                          label: "Vegetarian",
-                          iri: "http://example.com/diet/vegetarian",
-                        },
-                        {
-                          label: "Gluten-Free",
-                          iri: "http://example.com/diet/gluten-free",
                         },
                       ],
                       ingredients: [
@@ -178,13 +106,9 @@ const MenuOverview: React.FC = () => {
                           label: "Basil",
                           iri: "http://example.com/ingredient/basil",
                         },
-                        {
-                          label: "Vegetable broth",
-                          iri: "http://example.com/ingredient/veg-broth",
-                        },
                       ],
                       servingSize: 300,
-                      calories: 270,
+                      calories: 280,
                       nationalCuisines: [
                         {
                           label: "Italian",
@@ -193,12 +117,138 @@ const MenuOverview: React.FC = () => {
                       ],
                       preparationMethods: [
                         {
-                          label: "Boiled",
-                          iri: "http://example.com/prep/boiled",
+                          label: "Roasted",
+                          iri: "http://example.com/prep/roasted",
+                        },
+                      ],
+                      spicinessLevel: "Mild",
+                    },
+                  ],
+                },
+                {
+                  iri: "https://example.com/menu-category/main-courses",
+                  title: "Main Courses",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/veggie-burger",
+                      title: "Grilled Veggie Burger",
+                      description:
+                        "Black bean patty, avocado, and house-made pickles.",
+                      visibility: true,
+                      price: 10.5,
+                      image: "",
+                      allergens: [
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
                         },
                         {
-                          label: "Blended",
-                          iri: "http://example.com/prep/blended",
+                          label: "Soy",
+                          iri: "http://example.com/allergen/soy",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Black beans",
+                          iri: "http://example.com/ingredient/black-beans",
+                        },
+                        {
+                          label: "Avocado",
+                          iri: "http://example.com/ingredient/avocado",
+                        },
+                        {
+                          label: "Pickles",
+                          iri: "http://example.com/ingredient/pickles",
+                        },
+                      ],
+                      servingSize: 350,
+                      calories: 620,
+                      nationalCuisines: [
+                        {
+                          label: "American",
+                          iri: "http://example.com/cuisine/american",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Grilled",
+                          iri: "http://example.com/prep/grilled",
+                        },
+                      ],
+                      spicinessLevel: "Medium",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              iri: "https://example.com/menu/weekend-brunch",
+              title: "Weekend Brunch",
+              availability: "Sat–Sun 10:00–14:00",
+              description: "Relax and refuel with our weekend brunch specials.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  iri: "https://example.com/menu-category/breakfast-bowls",
+                  title: "Breakfast Bowls",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/granola-bowl",
+                      title: "Berry Granola Bowl",
+                      description:
+                        "Crunchy granola with Greek yogurt and seasonal berries.",
+                      visibility: true,
+                      price: 6.8,
+                      image: "",
+                      allergens: [
+                        {
+                          label: "Dairy",
+                          iri: "http://example.com/allergen/dairy",
+                        },
+                        {
+                          label: "Nuts",
+                          iri: "http://example.com/allergen/nuts",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Yogurt",
+                          iri: "http://example.com/ingredient/yogurt",
+                        },
+                        {
+                          label: "Granola",
+                          iri: "http://example.com/ingredient/granola",
+                        },
+                        {
+                          label: "Berries",
+                          iri: "http://example.com/ingredient/berries",
+                        },
+                      ],
+                      servingSize: 280,
+                      calories: 410,
+                      nationalCuisines: [
+                        {
+                          label: "Continental",
+                          iri: "http://example.com/cuisine/continental",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Chilled",
+                          iri: "http://example.com/prep/chilled",
                         },
                       ],
                       spicinessLevel: "Not at all",
@@ -210,154 +260,68 @@ const MenuOverview: React.FC = () => {
           ],
         },
         {
-          iri: "https://example.com/outlet/amsterdam",
-          name: "GreenFork Amsterdam",
-          address: "Prinsengracht 267, 1016 GV Amsterdam, Netherlands",
-          openingHours: "Mon–Fri 09:00–17:00",
+          iri: "https://example.com/outlet/paris-le-marais",
+          name: "Farm & Table – Le Marais",
+          address: "Rue Vieille du Temple 45, 75004 Paris, France",
+          openingHours: "Tue–Sun 09:00–23:00",
           menus: [
             {
-              iri: "https://example.com/menu/weekday-lunch",
-              title: "Weekday Lunch Menu",
-              availability: "Mon–Fri 11:00–15:00",
+              iri: "https://example.com/menu/dinner",
+              title: "Dinner Menu",
+              availability: "Tue–Sun 17:00–22:00",
               description:
-                "Fresh, seasonal lunch options designed for balance and flavor.",
+                "Elegant dishes featuring locally sourced ingredients.",
               visibility: true,
               currency: "EUR",
               categories: [
                 {
-                  iri: "https://example.com/menu-category/grain-bowls",
-                  title: "Grain Bowls",
+                  iri: "https://example.com/menu-category/starters",
+                  title: "Starters",
                   menuItems: [
                     {
-                      iri: "https://example.com/menu-item/miso-quinoa-bowl",
-                      title: "Miso Quinoa Bowl",
+                      iri: "https://example.com/menu-item/beet-tartare",
+                      title: "Beet Tartare",
                       description:
-                        "Warm quinoa, miso-roasted aubergine, edamame, carrots, sesame dressing.",
+                        "Beets, capers, shallots, and horseradish cream.",
                       visibility: true,
-                      price: 9.9,
+                      price: 7.2,
                       image: "",
                       allergens: [
                         {
-                          label: "Soy",
-                          iri: "http://example.com/allergen/soy",
-                        },
-                        {
-                          label: "Sesame",
-                          iri: "http://example.com/allergen/sesame",
+                          label: "Dairy",
+                          iri: "http://example.com/allergen/dairy",
                         },
                       ],
-                      suitableForDiets: [
-                        {
-                          label: "Vegan",
-                          iri: "http://example.com/diet/vegan",
-                        },
-                      ],
-                      ingredients: [
-                        {
-                          label: "Quinoa",
-                          iri: "http://example.com/ingredient/quinoa",
-                        },
-                        {
-                          label: "Aubergine",
-                          iri: "http://example.com/ingredient/aubergine",
-                        },
-                        {
-                          label: "Miso",
-                          iri: "http://example.com/ingredient/miso",
-                        },
-                        {
-                          label: "Carrot",
-                          iri: "http://example.com/ingredient/carrot",
-                        },
-                        {
-                          label: "Edamame",
-                          iri: "http://example.com/ingredient/edamame",
-                        },
-                        {
-                          label: "Sesame dressing",
-                          iri: "http://example.com/ingredient/sesame-dressing",
-                        },
-                      ],
-                      servingSize: 350,
-                      calories: 610,
-                      nationalCuisines: [
-                        {
-                          label: "Japanese",
-                          iri: "http://example.com/cuisine/japanese",
-                        },
-                      ],
-                      preparationMethods: [
-                        {
-                          label: "Roasted",
-                          iri: "http://example.com/prep/roasted",
-                        },
-                        {
-                          label: "Cold-assembled",
-                          iri: "http://example.com/prep/cold-assembled",
-                        },
-                      ],
-                      spicinessLevel: "Mild",
-                    },
-                  ],
-                },
-                {
-                  iri: "https://example.com/menu-category/soups",
-                  title: "Soups",
-                  menuItems: [
-                    {
-                      iri: "https://example.com/menu-item/tomato-basil-soup",
-                      title: "Tomato Basil Soup",
-                      description:
-                        "Classic tomato soup with a hint of garlic and fresh basil.",
-                      visibility: true,
-                      price: 5.5,
-                      image: "https://example.com/images/tomato-soup.jpg",
-                      allergens: [],
                       suitableForDiets: [
                         {
                           label: "Vegetarian",
                           iri: "http://example.com/diet/vegetarian",
                         },
-                        {
-                          label: "Gluten-Free",
-                          iri: "http://example.com/diet/gluten-free",
-                        },
                       ],
                       ingredients: [
                         {
-                          label: "Tomato",
-                          iri: "http://example.com/ingredient/tomato",
+                          label: "Beetroot",
+                          iri: "http://example.com/ingredient/beetroot",
                         },
                         {
-                          label: "Garlic",
-                          iri: "http://example.com/ingredient/garlic",
+                          label: "Shallots",
+                          iri: "http://example.com/ingredient/shallots",
                         },
                         {
-                          label: "Basil",
-                          iri: "http://example.com/ingredient/basil",
-                        },
-                        {
-                          label: "Vegetable broth",
-                          iri: "http://example.com/ingredient/veg-broth",
+                          label: "Capers",
+                          iri: "http://example.com/ingredient/capers",
                         },
                       ],
-                      servingSize: 300,
-                      calories: 270,
+                      servingSize: 200,
+                      calories: 320,
                       nationalCuisines: [
                         {
-                          label: "Italian",
-                          iri: "http://example.com/cuisine/italian",
+                          label: "French",
+                          iri: "http://example.com/cuisine/french",
                         },
                       ],
                       preparationMethods: [
-                        {
-                          label: "Boiled",
-                          iri: "http://example.com/prep/boiled",
-                        },
-                        {
-                          label: "Blended",
-                          iri: "http://example.com/prep/blended",
-                        },
+                        { label: "Raw", iri: "http://example.com/prep/raw" },
                       ],
                       spicinessLevel: "Not at all",
                     },
@@ -377,15 +341,22 @@ const MenuOverview: React.FC = () => {
     return (
       <MenuCreateAndEdit
         brandData={brandDataQuery.data}
-        indexSelectedMenu={indexEditedMenu}
-        indexSelectedLocation={indexCurrentLocation}
+        indexEditedMenu={indexEditedMenu}
+        indexEditedLocation={indexCurrentLocation}
+        setMenuIsBeingEdited={setMenuIsBeingEdited}
       />
     );
   }
 
   return (
     <div style={{ height: "100dvh", backgroundColor: "#FAFAFA" }}>
-      <Modal show={false}>
+      <Modal
+        show={showLocations}
+        onHide={() => {
+          setShowLocations(false);
+          setLocationIsBeingEdited(false);
+        }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>
             <FormattedMessage
@@ -396,12 +367,15 @@ const MenuOverview: React.FC = () => {
         </Modal.Header>
 
         <Modal.Body>
-          {locationIsBeingEdited === true ? (
+          {locationIsBeingEdited && (
             <EditLocation
               indexEditedLocation={indexEditedLocation}
               locations={brandDataQuery.data?.outlets}
+              setLocationIsBeingEdited={setLocationIsBeingEdited}
             />
-          ) : (
+          )}
+
+          {!locationIsBeingEdited && (
             <>
               <Row className="align-items-center">
                 <Col xs={5}>
@@ -449,7 +423,7 @@ const MenuOverview: React.FC = () => {
               </Row>
 
               <Stack className="mt-3" gap={2}>
-                {brandDataQuery.data?.outlets.map((outlet) => {
+                {brandDataQuery.data?.outlets.map((outlet, index) => {
                   return (
                     <Row className="align-items-center">
                       <Col>
@@ -458,7 +432,14 @@ const MenuOverview: React.FC = () => {
 
                       <Col>
                         <Stack direction="horizontal" gap={2}>
-                          <Button variant="secondary" className="ms-auto">
+                          <Button
+                            variant="secondary"
+                            className="ms-auto"
+                            onClick={() => {
+                              setLocationIsBeingEdited(true);
+                              setIndexEditedLocation(index);
+                            }}
+                          >
                             <FormattedMessage id="edit" defaultMessage="Edit" />
                           </Button>
 
@@ -487,12 +468,28 @@ const MenuOverview: React.FC = () => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save Changes</Button>
+          <Button
+            onClick={() => {
+              setShowLocations(false);
+              setLocationIsBeingEdited(false);
+            }}
+            variant="secondary"
+          >
+            <FormattedMessage id="cancel" defaultMessage="Cancel" />
+          </Button>
+
+          <Button variant="primary">
+            <FormattedMessage id="save" defaultMessage="Save" />
+          </Button>
         </Modal.Footer>
       </Modal>
 
-      <Modal show={true}>
+      <Modal
+        show={brandIsBeingEdited}
+        onHide={() => {
+          setBrandIsBeingEdited(false);
+        }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>
             <FormattedMessage
@@ -507,19 +504,42 @@ const MenuOverview: React.FC = () => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save Changes</Button>
+          <Button
+            onClick={() => {
+              setBrandIsBeingEdited(false);
+            }}
+            variant="secondary"
+          >
+            <FormattedMessage id="cancel" defaultMessage="Cancel" />
+          </Button>
+
+          <Button variant="primary">
+            <FormattedMessage id="save" defaultMessage="Save" />
+          </Button>
         </Modal.Footer>
       </Modal>
 
-      <Offcanvas show={false} placement="end" style={{ maxWidth: "200px" }}>
+      <Offcanvas
+        show={showOffcanvas}
+        onHide={() => {
+          setShowOffcanvas(false);
+        }}
+        placement="end"
+        style={{ maxWidth: "200px" }}
+      >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <FormattedMessage id="settings" defaultMessage="Settings" />
           </Offcanvas.Title>
         </Offcanvas.Header>
 
-        <button className="offcanvas-item-button text-start position-relative">
+        <button
+          className="offcanvas-item-button text-start position-relative"
+          onClick={() => {
+            setShowOffcanvas(false);
+            setShowLocations(true);
+          }}
+        >
           <img
             src="images/geo-alt.svg"
             alt="Location settings"
@@ -534,7 +554,13 @@ const MenuOverview: React.FC = () => {
           </span>
         </button>
 
-        <button className="offcanvas-item-button text-start position-relative">
+        <button
+          onClick={() => {
+            setShowOffcanvas(false);
+            setBrandIsBeingEdited(true);
+          }}
+          className="offcanvas-item-button text-start position-relative"
+        >
           <img
             src="images/gear.svg"
             alt="Settings icon"
@@ -584,6 +610,9 @@ const MenuOverview: React.FC = () => {
             <button
               style={{ background: "none", border: "none" }}
               aria-label="Open offcanvas"
+              onClick={() => {
+                setShowOffcanvas(true);
+              }}
             >
               <img
                 src="images/list.svg"
@@ -597,7 +626,7 @@ const MenuOverview: React.FC = () => {
 
       <Stack gap={3} className="ps-3 pe-3 mt-3">
         {brandDataQuery.data?.outlets[indexCurrentLocation].menus.map(
-          (menu: Menu) => {
+          (menu, index) => {
             return (
               <Card style={{ maxWidth: "470px" }}>
                 <Card.Body>
@@ -640,7 +669,13 @@ const MenuOverview: React.FC = () => {
 
                       <Row>
                         <Col>
-                          <Button variant="secondary">
+                          <Button
+                            variant="secondary"
+                            onClick={() => {
+                              setIndexEditedMenu(index);
+                              setMenuIsBeingEdited(true);
+                            }}
+                          >
                             <FormattedMessage
                               id="editMenu"
                               defaultMessage="Edit"
@@ -666,7 +701,12 @@ const MenuOverview: React.FC = () => {
         )}
       </Stack>
 
-      <Button className="position-absolute position-fixed bottom-0 end-0 mb-4 me-4 add-menu-round-button shadow">
+      <Button
+        className="position-absolute position-fixed bottom-0 end-0 mb-4 me-4 add-menu-round-button shadow"
+        onClick={() => {
+          setMenuIsBeingEdited(true);
+        }}
+      >
         <img
           src="images/plus.svg"
           alt="Add menu icon"

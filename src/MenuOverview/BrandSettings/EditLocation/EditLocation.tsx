@@ -11,6 +11,7 @@ import type { FoodEstablishmentOutlet } from "../../menuOverviewTypes";
 type EditLocationProps = {
   locations: FoodEstablishmentOutlet[] | undefined;
   indexEditedLocation: number;
+  setLocationIsBeingEdited: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 /**
@@ -19,6 +20,7 @@ type EditLocationProps = {
 const EditLocation: React.FC<EditLocationProps> = ({
   locations,
   indexEditedLocation,
+  setLocationIsBeingEdited,
 }) => {
   return (
     <>
@@ -68,9 +70,14 @@ const EditLocation: React.FC<EditLocationProps> = ({
         </Stack>
       </Container>
 
-      <Navbar fixed="bottom">
+      <Navbar sticky="bottom">
         <Container>
-          <Button variant="secondary">
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setLocationIsBeingEdited(false);
+            }}
+          >
             <FormattedMessage id="cancel" defaultMessage="Cancel" />
           </Button>
           <Navbar.Collapse className="justify-content-end">
