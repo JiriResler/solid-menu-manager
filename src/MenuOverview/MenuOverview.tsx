@@ -57,7 +57,7 @@ const MenuOverview: React.FC = () => {
       outlets: [
         {
           iri: "https://example.com/outlet/berlin-mitte",
-          name: "Farm & Table – Berlin Mitte",
+          name: "Farm & Table – Berlin",
           address: "Friedrichstraße 120, 10117 Berlin, Germany",
           openingHours: "Mon–Sun 08:00–22:00",
           menus: [
@@ -182,6 +182,70 @@ const MenuOverview: React.FC = () => {
                         },
                       ],
                       spicinessLevel: "Medium",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              iri: "https://example.com/menu/dinner",
+              title: "Dinner Menu",
+              availability: "Tue–Sun 17:00–22:00",
+              description:
+                "Elegant dishes featuring locally sourced ingredients.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  iri: "https://example.com/menu-category/starters",
+                  title: "Starters",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/beet-tartare",
+                      title: "Beet Tartare",
+                      description:
+                        "Beets, capers, shallots, and horseradish cream.",
+                      visibility: true,
+                      price: 7.2,
+                      image: "",
+                      allergens: [
+                        {
+                          label: "Dairy",
+                          iri: "http://example.com/allergen/dairy",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Beetroot",
+                          iri: "http://example.com/ingredient/beetroot",
+                        },
+                        {
+                          label: "Shallots",
+                          iri: "http://example.com/ingredient/shallots",
+                        },
+                        {
+                          label: "Capers",
+                          iri: "http://example.com/ingredient/capers",
+                        },
+                      ],
+                      servingSize: 200,
+                      calories: 320,
+                      nationalCuisines: [
+                        {
+                          label: "French",
+                          iri: "http://example.com/cuisine/french",
+                        },
+                      ],
+                      preparationMethods: [
+                        { label: "Raw", iri: "http://example.com/prep/raw" },
+                      ],
+                      spicinessLevel: "Not at all",
                     },
                   ],
                 },
