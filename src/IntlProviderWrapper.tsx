@@ -181,7 +181,7 @@ type Messages = {
   cancel: string
   save: string
   addImage: string
-  removeImage: string
+  remove: string
   allergens: string
   suitableForDiets: string
   ingredients: string
@@ -192,6 +192,10 @@ type Messages = {
   spicinessLevel: string
   brandSettings: string
   settings: string
+  addLogo: string
+  locations: string
+  addLocation: string
+  editLocation: string
 }
 
 const messagesInSlovak: Messages = {
@@ -390,7 +394,7 @@ const messagesInSlovak: Messages = {
   cancel: 'Zrušiť',
   save: 'Uložiť',
   addImage: 'Pridať obrázok',
-  removeImage: 'Odstrániť obrázok',
+  remove: 'Odstrániť',
   allergens: 'Alergény',
   suitableForDiets: 'Vhodné pre diéty',
   ingredients: 'Ingrediencie',
@@ -401,6 +405,10 @@ const messagesInSlovak: Messages = {
   spicinessLevel: 'Úroveň ostrosti',
   brandSettings: 'Nastavenia',
   settings: 'Nastavenia značky',
+  addLogo: 'Pridať logo',
+  locations: 'Pobočky',
+  addLocation: 'Pridať pobočku',
+  editLocation: 'Upraviť',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {
