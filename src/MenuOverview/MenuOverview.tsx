@@ -12,6 +12,7 @@ import type { Brand, Menu } from "./menuOverviewTypes";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
+import MenuCreateAndEdit from "../MenuCreateAndEdit/MenuCreateAndEdit";
 
 /**
  * Loads and displays existing menus found in a Solid Pod.
@@ -19,7 +20,11 @@ import Navbar from "react-bootstrap/Navbar";
 const MenuOverview: React.FC = () => {
   const intl = useIntl();
 
-  const [selectedLocationIndex, setSelectedLocationIndex] = useState(1);
+  const [menuIsBeingEdited, setMenuIsBeingEdited] = useState(true);
+
+  const [indexSelectedMenu, setIndexSelectedMenu] = useState(0);
+
+  const [indexSelectedLocation, setIndexSelectedLocation] = useState(0);
 
   const brandDataQuery = useQuery({
     queryKey: ["getMenuDataFromSolidPod"],
@@ -51,6 +56,102 @@ const MenuOverview: React.FC = () => {
                 {
                   title: "Bowls",
                   menuItems: [
+                    {
+                      title: "Mediterranean Quinoa Bowl",
+                      description:
+                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
+                      visibility: true,
+                      price: 9.5,
+                      image:
+                        "https://example.com/images/mediterranean-bowl.jpg",
+                      allergens: ["sesame"],
+                      suitableForDiets: ["vegan", "vegetarian"],
+                      ingredients: [
+                        "quinoa",
+                        "zucchini",
+                        "eggplant",
+                        "chickpeas",
+                        "olives",
+                        "tahini",
+                      ],
+                      servingSize: 350,
+                      calories: 620,
+                      nationalCuisines: ["Mediterranean"],
+                      preparationMethods: ["roasted", "cold-assembled"],
+                      spicinessLevel: "Not at all",
+                    },
+                    {
+                      title: "Mediterranean Quinoa Bowl",
+                      description:
+                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
+                      visibility: true,
+                      price: 9.5,
+                      image:
+                        "https://example.com/images/mediterranean-bowl.jpg",
+                      allergens: ["sesame"],
+                      suitableForDiets: ["vegan", "vegetarian"],
+                      ingredients: [
+                        "quinoa",
+                        "zucchini",
+                        "eggplant",
+                        "chickpeas",
+                        "olives",
+                        "tahini",
+                      ],
+                      servingSize: 350,
+                      calories: 620,
+                      nationalCuisines: ["Mediterranean"],
+                      preparationMethods: ["roasted", "cold-assembled"],
+                      spicinessLevel: "Not at all",
+                    },
+                    {
+                      title: "Mediterranean Quinoa Bowl",
+                      description:
+                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
+                      visibility: true,
+                      price: 9.5,
+                      image:
+                        "https://example.com/images/mediterranean-bowl.jpg",
+                      allergens: ["sesame"],
+                      suitableForDiets: ["vegan", "vegetarian"],
+                      ingredients: [
+                        "quinoa",
+                        "zucchini",
+                        "eggplant",
+                        "chickpeas",
+                        "olives",
+                        "tahini",
+                      ],
+                      servingSize: 350,
+                      calories: 620,
+                      nationalCuisines: ["Mediterranean"],
+                      preparationMethods: ["roasted", "cold-assembled"],
+                      spicinessLevel: "Not at all",
+                    },
+                    {
+                      title: "Mediterranean Quinoa Bowl",
+                      description:
+                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
+                      visibility: true,
+                      price: 9.5,
+                      image:
+                        "https://example.com/images/mediterranean-bowl.jpg",
+                      allergens: ["sesame"],
+                      suitableForDiets: ["vegan", "vegetarian"],
+                      ingredients: [
+                        "quinoa",
+                        "zucchini",
+                        "eggplant",
+                        "chickpeas",
+                        "olives",
+                        "tahini",
+                      ],
+                      servingSize: 350,
+                      calories: 620,
+                      nationalCuisines: ["Mediterranean"],
+                      preparationMethods: ["roasted", "cold-assembled"],
+                      spicinessLevel: "Not at all",
+                    },
                     {
                       title: "Mediterranean Quinoa Bowl",
                       description:
@@ -373,6 +474,16 @@ const MenuOverview: React.FC = () => {
     return mockedBrand;
   }
 
+  if (menuIsBeingEdited) {
+    return (
+      <MenuCreateAndEdit
+        brandData={brandDataQuery.data}
+        indexSelectedMenu={indexSelectedMenu}
+        indexSelectedLocation={indexSelectedLocation}
+      />
+    );
+  }
+
   return (
     <div style={{ height: "100dvh", backgroundColor: "#FAFAFA" }}>
       <Offcanvas show={false} placement="end" style={{ maxWidth: "200px" }}>
@@ -427,14 +538,19 @@ const MenuOverview: React.FC = () => {
 
       <Navbar
         sticky="top"
-        style={{ backgroundColor: "#7C4DFF", minHeight: '75px' }}
+        style={{ backgroundColor: "#7C4DFF", minHeight: "75px" }}
       >
         <Row className="w-100 align-items-center">
           <Col xs={9}>
             <span
-              style={{ color: "white", fontSize: "x-large", fontWeight: 500, marginLeft: '20px' }}
+              style={{
+                color: "white",
+                fontSize: "x-large",
+                fontWeight: 500,
+                marginLeft: "20px",
+              }}
             >
-              {brandDataQuery.data?.outlets[selectedLocationIndex].name}
+              {brandDataQuery.data?.outlets[indexSelectedLocation].name}
             </span>
           </Col>
 
@@ -454,7 +570,7 @@ const MenuOverview: React.FC = () => {
       </Navbar>
 
       <Stack gap={3} className="ps-3 pe-3 mt-3">
-        {brandDataQuery.data?.outlets[selectedLocationIndex].menus.map(
+        {brandDataQuery.data?.outlets[indexSelectedLocation].menus.map(
           (menu: Menu) => {
             return (
               <Card style={{ maxWidth: "470px" }}>
