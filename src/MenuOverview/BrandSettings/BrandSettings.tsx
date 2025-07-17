@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
+import Navbar from "react-bootstrap/Navbar";
 import { FormattedMessage } from "react-intl";
 
 /**
@@ -93,6 +94,19 @@ const BrandSettings: React.FC = () => {
           </Row>
         </Stack>
       </Container>
+
+      <Navbar fixed="bottom">
+        <Container>
+          <Button variant="secondary">
+            <FormattedMessage id="cancel" defaultMessage="Cancel" />
+          </Button>
+          <Navbar.Collapse className="justify-content-end">
+            <Button>
+              <FormattedMessage id="save" defaultMessage="Save" />
+            </Button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 };

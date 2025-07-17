@@ -27,118 +27,146 @@ const MenuOverview: React.FC = () => {
    */
   async function fetchMenuData() {
     const mockedBrand: Brand = {
-      logo: "https://example.com/logos/eurodeli.png",
-      name: "EuroDeli",
+      name: "GreenFork",
+      logo: "https://example.com/logos/greenfork-logo.png",
+      slogan: "Fresh. Local. Conscious.",
       outlets: [
         {
-          address: "Via Roma 12, 00185 Rome, Italy",
-          openingHours: "Mon–Sun 11:30–22:30",
+          name: "GreenFork Amsterdam",
+          address: "Prinsengracht 267, 1016 GV Amsterdam, Netherlands",
+          openingHours: "Mon–Sun 09:00–21:00",
           menus: [
             {
-              title: "Main Menu",
-              availability: "All day",
+              title: "Day Menu",
+              availability: "09:00–17:00",
               description:
-                "Traditional European dishes made with fresh local ingredients.",
+                "Fresh vegetarian and vegan options crafted with organic ingredients.",
               visibility: true,
               currency: "EUR",
               categories: [
                 {
-                  title: "Hot Dishes",
+                  title: "Bowls",
                   menuItems: [
                     {
-                      title: "Lasagna Bolognese",
+                      title: "Mediterranean Quinoa Bowl",
                       description:
-                        "Layers of fresh pasta with meat ragù, béchamel, and parmesan cheese.",
+                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
                       visibility: true,
-                      price: 12.5,
-                      image: "https://example.com/images/lasagna.jpg",
-                      allergens: ["gluten", "dairy"],
-                      suitableForDiets: ["omnivore"],
+                      price: 9.5,
+                      image:
+                        "https://example.com/images/mediterranean-bowl.jpg",
+                      allergens: ["sesame"],
+                      suitableForDiets: ["vegan", "vegetarian"],
                       ingredients: [
-                        "pasta",
-                        "meat ragù",
-                        "béchamel",
-                        "parmesan",
+                        "quinoa",
+                        "zucchini",
+                        "eggplant",
+                        "chickpeas",
+                        "olives",
+                        "tahini",
+                      ],
+                      servingSize: 350,
+                      calories: 620,
+                      nationalCuisines: ["Mediterranean"],
+                      preparationMethods: ["roasted", "cold-assembled"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+                {
+                  title: "Wraps",
+                  menuItems: [
+                    {
+                      title: "Falafel Wrap",
+                      description:
+                        "Homemade falafel with cucumber, tomato, pickled onion, and hummus in a spinach wrap.",
+                      visibility: true,
+                      price: 7.8,
+                      image: "https://example.com/images/falafel-wrap.jpg",
+                      allergens: ["gluten", "sesame"],
+                      suitableForDiets: ["vegetarian"],
+                      ingredients: [
+                        "falafel",
+                        "tomato",
+                        "cucumber",
+                        "hummus",
+                        "spinach wrap",
+                      ],
+                      servingSize: 280,
+                      calories: 540,
+                      nationalCuisines: ["Middle Eastern"],
+                      preparationMethods: ["fried", "wrapped"],
+                      spicinessLevel: "Mild",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "GreenFork Copenhagen",
+          address: "Nørrebrogade 56, 2200 København N, Denmark",
+          openingHours: "Tue–Sun 10:00–20:00",
+          menus: [
+            {
+              title: "Evening Menu",
+              availability: "17:00–20:00",
+              description:
+                "Nordic-inspired plant-forward dishes for conscious diners.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Plates",
+                  menuItems: [
+                    {
+                      title: "Roasted Root Vegetable Plate",
+                      description:
+                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
+                      visibility: true,
+                      price: 11.2,
+                      image: "https://example.com/images/root-plate.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "carrots",
+                        "beets",
+                        "parsnips",
+                        "dill oil",
+                        "oat yogurt",
+                      ],
+                      servingSize: 320,
+                      calories: 510,
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["roasted"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+                {
+                  title: "Soups",
+                  menuItems: [
+                    {
+                      title: "Creamy Celeriac Soup",
+                      description:
+                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
+                      visibility: true,
+                      price: 6.5,
+                      image: "https://example.com/images/celeriac-soup.jpg",
+                      allergens: [],
+                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      ingredients: [
+                        "celeriac",
+                        "potato",
+                        "herb oil",
+                        "pumpkin seeds",
                       ],
                       servingSize: 300,
-                      calories: 780,
-                      nationalCuisines: ["Italian"],
-                      preparationMethods: ["baked"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          address: "Karl-Liebknecht-Straße 9, 10178 Berlin, Germany",
-          openingHours: "Mon–Sun 10:00–21:00",
-          menus: [
-            {
-              title: "Main Menu",
-              availability: "All day",
-              description:
-                "Homestyle meals inspired by traditional European cuisine.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
-                {
-                  title: "Vegetarian",
-                  menuItems: [
-                    {
-                      title: "Potato Pancakes with Applesauce",
-                      description:
-                        "Crispy fried potato pancakes served with sweet applesauce.",
-                      visibility: true,
-                      price: 7.2,
-                      image: "https://example.com/images/kartoffelpuffer.jpg",
-                      allergens: ["egg"],
-                      suitableForDiets: ["vegetarian"],
-                      ingredients: ["potatoes", "egg", "oil", "applesauce"],
-                      servingSize: 200,
-                      calories: 520,
-                      nationalCuisines: ["German"],
-                      preparationMethods: ["fried"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          address: "Carrer de Mallorca, 45, 08029 Barcelona, Spain",
-          openingHours: "Mon–Sun 12:00–23:00",
-          menus: [
-            {
-              title: "Main Menu",
-              availability: "All day",
-              description:
-                "Fresh Mediterranean tapas and classic Spanish dishes.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
-                {
-                  title: "Tapas",
-                  menuItems: [
-                    {
-                      title: "Patatas Bravas",
-                      description:
-                        "Fried potatoes served with spicy brava sauce and aioli.",
-                      visibility: true,
-                      price: 5.5,
-                      image: "https://example.com/images/patatas-bravas.jpg",
-                      allergens: ["egg", "garlic"],
-                      suitableForDiets: ["vegetarian"],
-                      ingredients: ["potatoes", "brava sauce", "aioli"],
-                      servingSize: 180,
                       calories: 430,
-                      nationalCuisines: ["Spanish"],
-                      preparationMethods: ["fried"],
-                      spicinessLevel: "Medium",
+                      nationalCuisines: ["Nordic"],
+                      preparationMethods: ["blended", "boiled"],
+                      spicinessLevel: "Not at all",
                     },
                   ],
                 },

@@ -4,6 +4,8 @@ import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Form from "react-bootstrap/Form";
 import { FormattedMessage } from "react-intl";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 
 /**
  * Enables the user to specify location information.
@@ -39,6 +41,19 @@ const EditLocation: React.FC = () => {
           </Form.Group>
         </Stack>
       </Container>
+
+      <Navbar fixed="bottom">
+        <Container>
+          <Button variant="secondary">
+            <FormattedMessage id="cancel" defaultMessage="Cancel" />
+          </Button>
+          <Navbar.Collapse className="justify-content-end">
+            <Button>
+              <FormattedMessage id="save" defaultMessage="Save" />
+            </Button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 };
