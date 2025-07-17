@@ -36,430 +36,161 @@ const MenuOverview: React.FC = () => {
    */
   async function fetchMenuData() {
     const mockedBrand: Brand = {
+      iri: "https://example.com/brand/greenfork",
       name: "GreenFork",
       logo: "https://example.com/logos/greenfork-logo.png",
       slogan: "Fresh. Local. Conscious.",
       outlets: [
         {
+          iri: "https://example.com/outlet/amsterdam",
           name: "GreenFork Amsterdam",
           address: "Prinsengracht 267, 1016 GV Amsterdam, Netherlands",
-          openingHours: "Mon–Sun 09:00–21:00",
+          openingHours: "Mon–Fri 09:00–17:00",
           menus: [
             {
-              title: "Day Menu",
-              availability: "09:00–17:00",
+              iri: "https://example.com/menu/weekday-lunch",
+              title: "Weekday Lunch Menu",
+              availability: "Mon–Fri 11:00–15:00",
               description:
-                "Fresh vegetarian and vegan options crafted with organic ingredients.",
+                "Fresh, seasonal lunch options designed for balance and flavor.",
               visibility: true,
               currency: "EUR",
               categories: [
                 {
-                  title: "Bowls",
+                  iri: "https://example.com/menu-category/grain-bowls",
+                  title: "Grain Bowls",
                   menuItems: [
                     {
-                      title: "Mediterranean Quinoa Bowl",
+                      iri: "https://example.com/menu-item/miso-quinoa-bowl",
+                      title: "Miso Quinoa Bowl",
                       description:
-                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
+                        "Warm quinoa, miso-roasted aubergine, edamame, carrots, sesame dressing.",
                       visibility: true,
-                      price: 9.5,
-                      image:
-                        "https://example.com/images/mediterranean-bowl.jpg",
-                      allergens: ["sesame"],
-                      suitableForDiets: ["vegan", "vegetarian"],
+                      price: 9.9,
+                      image: "",
+                      allergens: [
+                        {
+                          label: "Soy",
+                          iri: "http://example.com/allergen/soy",
+                        },
+                        {
+                          label: "Sesame",
+                          iri: "http://example.com/allergen/sesame",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                      ],
                       ingredients: [
-                        "quinoa",
-                        "zucchini",
-                        "eggplant",
-                        "chickpeas",
-                        "olives",
-                        "tahini",
+                        {
+                          label: "Quinoa",
+                          iri: "http://example.com/ingredient/quinoa",
+                        },
+                        {
+                          label: "Aubergine",
+                          iri: "http://example.com/ingredient/aubergine",
+                        },
+                        {
+                          label: "Miso",
+                          iri: "http://example.com/ingredient/miso",
+                        },
+                        {
+                          label: "Carrot",
+                          iri: "http://example.com/ingredient/carrot",
+                        },
+                        {
+                          label: "Edamame",
+                          iri: "http://example.com/ingredient/edamame",
+                        },
+                        {
+                          label: "Sesame dressing",
+                          iri: "http://example.com/ingredient/sesame-dressing",
+                        },
                       ],
                       servingSize: 350,
-                      calories: 620,
-                      nationalCuisines: ["Mediterranean"],
-                      preparationMethods: ["roasted", "cold-assembled"],
-                      spicinessLevel: "Not at all",
-                    },
-                    {
-                      title: "Mediterranean Quinoa Bowl",
-                      description:
-                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
-                      visibility: true,
-                      price: 9.5,
-                      image:
-                        "https://example.com/images/mediterranean-bowl.jpg",
-                      allergens: ["sesame"],
-                      suitableForDiets: ["vegan", "vegetarian"],
-                      ingredients: [
-                        "quinoa",
-                        "zucchini",
-                        "eggplant",
-                        "chickpeas",
-                        "olives",
-                        "tahini",
+                      calories: 610,
+                      nationalCuisines: [
+                        {
+                          label: "Japanese",
+                          iri: "http://example.com/cuisine/japanese",
+                        },
                       ],
-                      servingSize: 350,
-                      calories: 620,
-                      nationalCuisines: ["Mediterranean"],
-                      preparationMethods: ["roasted", "cold-assembled"],
-                      spicinessLevel: "Not at all",
-                    },
-                    {
-                      title: "Mediterranean Quinoa Bowl",
-                      description:
-                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
-                      visibility: true,
-                      price: 9.5,
-                      image:
-                        "https://example.com/images/mediterranean-bowl.jpg",
-                      allergens: ["sesame"],
-                      suitableForDiets: ["vegan", "vegetarian"],
-                      ingredients: [
-                        "quinoa",
-                        "zucchini",
-                        "eggplant",
-                        "chickpeas",
-                        "olives",
-                        "tahini",
+                      preparationMethods: [
+                        {
+                          label: "Roasted",
+                          iri: "http://example.com/prep/roasted",
+                        },
+                        {
+                          label: "Cold-assembled",
+                          iri: "http://example.com/prep/cold-assembled",
+                        },
                       ],
-                      servingSize: 350,
-                      calories: 620,
-                      nationalCuisines: ["Mediterranean"],
-                      preparationMethods: ["roasted", "cold-assembled"],
-                      spicinessLevel: "Not at all",
-                    },
-                    {
-                      title: "Mediterranean Quinoa Bowl",
-                      description:
-                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
-                      visibility: true,
-                      price: 9.5,
-                      image:
-                        "https://example.com/images/mediterranean-bowl.jpg",
-                      allergens: ["sesame"],
-                      suitableForDiets: ["vegan", "vegetarian"],
-                      ingredients: [
-                        "quinoa",
-                        "zucchini",
-                        "eggplant",
-                        "chickpeas",
-                        "olives",
-                        "tahini",
-                      ],
-                      servingSize: 350,
-                      calories: 620,
-                      nationalCuisines: ["Mediterranean"],
-                      preparationMethods: ["roasted", "cold-assembled"],
-                      spicinessLevel: "Not at all",
-                    },
-                    {
-                      title: "Mediterranean Quinoa Bowl",
-                      description:
-                        "Quinoa with roasted vegetables, chickpeas, olives, and tahini dressing.",
-                      visibility: true,
-                      price: 9.5,
-                      image:
-                        "https://example.com/images/mediterranean-bowl.jpg",
-                      allergens: ["sesame"],
-                      suitableForDiets: ["vegan", "vegetarian"],
-                      ingredients: [
-                        "quinoa",
-                        "zucchini",
-                        "eggplant",
-                        "chickpeas",
-                        "olives",
-                        "tahini",
-                      ],
-                      servingSize: 350,
-                      calories: 620,
-                      nationalCuisines: ["Mediterranean"],
-                      preparationMethods: ["roasted", "cold-assembled"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-                {
-                  title: "Wraps",
-                  menuItems: [
-                    {
-                      title: "Falafel Wrap",
-                      description:
-                        "Homemade falafel with cucumber, tomato, pickled onion, and hummus in a spinach wrap.",
-                      visibility: true,
-                      price: 7.8,
-                      image: "https://example.com/images/falafel-wrap.jpg",
-                      allergens: ["gluten", "sesame"],
-                      suitableForDiets: ["vegetarian"],
-                      ingredients: [
-                        "falafel",
-                        "tomato",
-                        "cucumber",
-                        "hummus",
-                        "spinach wrap",
-                      ],
-                      servingSize: 280,
-                      calories: 540,
-                      nationalCuisines: ["Middle Eastern"],
-                      preparationMethods: ["fried", "wrapped"],
                       spicinessLevel: "Mild",
                     },
                   ],
                 },
-              ],
-            },
-          ],
-        },
-        {
-          name: "GreenFork Copenhagen",
-          address: "Nørrebrogade 56, 2200 København N, Denmark",
-          openingHours: "Tue–Sun 10:00–20:00",
-          menus: [
-            {
-              title: "Evening Menu",
-              availability: "17:00–20:00",
-              description:
-                "Nordic-inspired plant-forward dishes for conscious diners.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
                 {
-                  title: "Plates",
-                  menuItems: [
-                    {
-                      title: "Roasted Root Vegetable Plate",
-                      description:
-                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
-                      visibility: true,
-                      price: 11.2,
-                      image: "https://example.com/images/root-plate.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "carrots",
-                        "beets",
-                        "parsnips",
-                        "dill oil",
-                        "oat yogurt",
-                      ],
-                      servingSize: 320,
-                      calories: 510,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["roasted"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-                {
+                  iri: "https://example.com/menu-category/soups",
                   title: "Soups",
                   menuItems: [
                     {
-                      title: "Creamy Celeriac Soup",
+                      iri: "https://example.com/menu-item/tomato-basil-soup",
+                      title: "Tomato Basil Soup",
                       description:
-                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
+                        "Classic tomato soup with a hint of garlic and fresh basil.",
                       visibility: true,
-                      price: 6.5,
-                      image: "https://example.com/images/celeriac-soup.jpg",
+                      price: 5.5,
+                      image: "https://example.com/images/tomato-soup.jpg",
                       allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                        {
+                          label: "Gluten-Free",
+                          iri: "http://example.com/diet/gluten-free",
+                        },
+                      ],
                       ingredients: [
-                        "celeriac",
-                        "potato",
-                        "herb oil",
-                        "pumpkin seeds",
+                        {
+                          label: "Tomato",
+                          iri: "http://example.com/ingredient/tomato",
+                        },
+                        {
+                          label: "Garlic",
+                          iri: "http://example.com/ingredient/garlic",
+                        },
+                        {
+                          label: "Basil",
+                          iri: "http://example.com/ingredient/basil",
+                        },
+                        {
+                          label: "Vegetable broth",
+                          iri: "http://example.com/ingredient/veg-broth",
+                        },
                       ],
                       servingSize: 300,
-                      calories: 430,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["blended", "boiled"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              title: "Evening Menu",
-              availability: "17:00–20:00",
-              description:
-                "Nordic-inspired plant-forward dishes for conscious diners.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
-                {
-                  title: "Plates",
-                  menuItems: [
-                    {
-                      title: "Roasted Root Vegetable Plate",
-                      description:
-                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
-                      visibility: true,
-                      price: 11.2,
-                      image: "https://example.com/images/root-plate.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "carrots",
-                        "beets",
-                        "parsnips",
-                        "dill oil",
-                        "oat yogurt",
+                      calories: 270,
+                      nationalCuisines: [
+                        {
+                          label: "Italian",
+                          iri: "http://example.com/cuisine/italian",
+                        },
                       ],
-                      servingSize: 320,
-                      calories: 510,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["roasted"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-                {
-                  title: "Soups",
-                  menuItems: [
-                    {
-                      title: "Creamy Celeriac Soup",
-                      description:
-                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
-                      visibility: true,
-                      price: 6.5,
-                      image: "https://example.com/images/celeriac-soup.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "celeriac",
-                        "potato",
-                        "herb oil",
-                        "pumpkin seeds",
+                      preparationMethods: [
+                        {
+                          label: "Boiled",
+                          iri: "http://example.com/prep/boiled",
+                        },
+                        {
+                          label: "Blended",
+                          iri: "http://example.com/prep/blended",
+                        },
                       ],
-                      servingSize: 300,
-                      calories: 430,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["blended", "boiled"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              title: "Evening Menu",
-              availability: "17:00–20:00",
-              description:
-                "Nordic-inspired plant-forward dishes for conscious diners.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
-                {
-                  title: "Plates",
-                  menuItems: [
-                    {
-                      title: "Roasted Root Vegetable Plate",
-                      description:
-                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
-                      visibility: true,
-                      price: 11.2,
-                      image: "https://example.com/images/root-plate.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "carrots",
-                        "beets",
-                        "parsnips",
-                        "dill oil",
-                        "oat yogurt",
-                      ],
-                      servingSize: 320,
-                      calories: 510,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["roasted"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-                {
-                  title: "Soups",
-                  menuItems: [
-                    {
-                      title: "Creamy Celeriac Soup",
-                      description:
-                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
-                      visibility: true,
-                      price: 6.5,
-                      image: "https://example.com/images/celeriac-soup.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "celeriac",
-                        "potato",
-                        "herb oil",
-                        "pumpkin seeds",
-                      ],
-                      servingSize: 300,
-                      calories: 430,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["blended", "boiled"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              title: "Evening Menu",
-              availability: "17:00–20:00",
-              description:
-                "Nordic-inspired plant-forward dishes for conscious diners.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
-                {
-                  title: "Plates",
-                  menuItems: [
-                    {
-                      title: "Roasted Root Vegetable Plate",
-                      description:
-                        "Carrots, beets, and parsnips with dill oil and oat yogurt.",
-                      visibility: true,
-                      price: 11.2,
-                      image: "https://example.com/images/root-plate.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "carrots",
-                        "beets",
-                        "parsnips",
-                        "dill oil",
-                        "oat yogurt",
-                      ],
-                      servingSize: 320,
-                      calories: 510,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["roasted"],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-                {
-                  title: "Soups",
-                  menuItems: [
-                    {
-                      title: "Creamy Celeriac Soup",
-                      description:
-                        "Silky celeriac and potato soup topped with herb oil and pumpkin seeds.",
-                      visibility: true,
-                      price: 6.5,
-                      image: "https://example.com/images/celeriac-soup.jpg",
-                      allergens: [],
-                      suitableForDiets: ["vegan", "vegetarian", "gluten-free"],
-                      ingredients: [
-                        "celeriac",
-                        "potato",
-                        "herb oil",
-                        "pumpkin seeds",
-                      ],
-                      servingSize: 300,
-                      calories: 430,
-                      nationalCuisines: ["Nordic"],
-                      preparationMethods: ["blended", "boiled"],
                       spicinessLevel: "Not at all",
                     },
                   ],

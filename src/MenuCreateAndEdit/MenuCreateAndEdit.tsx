@@ -8,6 +8,8 @@ import { FormattedMessage, useIntl } from "react-intl";
 import Navbar from "react-bootstrap/Navbar";
 import Card from "react-bootstrap/Card";
 import type { Brand } from "../MenuOverview/menuOverviewTypes";
+import { useState } from "react";
+import EditMenuItem from "./EditMenuItem/EditMenuItem";
 
 type MenuCreateAndEditProps = {
   brandData: Brand | undefined;
@@ -28,6 +30,23 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
 
     const menuEdited =
       brandData?.outlets[indexSelectedLocation].menus[indexSelectedMenu];
+
+    const [menuItemIsBeingEdited, setMenuItemIsBeingEdited] = useState(true);
+
+    const [indexSelectedCategory, setIndexSelectedCategory] = useState(0);
+
+    const [indexSelectedMenuItem, setIndexSelectedMenuItem] = useState(0);
+    
+
+    if (menuItemIsBeingEdited) {
+    return (
+      <EditMenuItem
+        menuEdited={menuEdited}
+        indexSelectedCategory={indexSelectedCategory}
+        indexSelectedMenuItem={indexSelectedMenuItem}
+      />
+    );
+  }
 
     return (
       <>
@@ -188,11 +207,7 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
                           </Form.Label>
 
                           <Col xs="9">
-                            <Form.Control
-                              value={
-                                menuItem.title
-                              }
-                            />
+                            <Form.Control value={menuItem.title} />
                           </Col>
                         </Form.Group>
                       </Col>
@@ -276,7 +291,7 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
       >
         <Card
           className="position-absolute top-50 start-50 translate-middle shadow-sm"
-          style={{ width: "700px", height: "90dvh", overflowY: 'auto'}}
+          style={{ width: "700px", height: "90dvh", overflowY: "auto" }}
         >
           <MenuCreationScreenContent />
         </Card>

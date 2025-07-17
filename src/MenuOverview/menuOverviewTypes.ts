@@ -1,4 +1,5 @@
 export type Brand = {
+  iri: string;
   name: string;
   logo: string;
   slogan: string;
@@ -6,6 +7,7 @@ export type Brand = {
 };
 
 type FoodEstablishmentOutlet = {
+  iri: string;
   name: string;
   address: string;
   openingHours: string;
@@ -13,6 +15,7 @@ type FoodEstablishmentOutlet = {
 };
 
 export type Menu = {
+  iri: string;
   title: string;
   availability: string;
   description: string;
@@ -22,22 +25,24 @@ export type Menu = {
 };
 
 type MenuCategory = {
+  iri: string;
   title: string;
   menuItems: MenuItem[];
 };
 
 type MenuItem = {
+  iri: string;
   title: string;
   description: string;
   visibility: boolean;
   price: number;
   image: string;
-  allergens: string[];
-  suitableForDiets: string[];
-  ingredients: string[];
+  allergens: { label: string; iri: string }[];
+  suitableForDiets: { label: string; iri: string }[];
+  ingredients: { label: string; iri: string }[];
   servingSize: number;
   calories: number;
-  nationalCuisines: string[];
-  preparationMethods: string[];
+  nationalCuisines: { label: string; iri: string }[];
+  preparationMethods: { label: string; iri: string }[];
   spicinessLevel: string;
 };
