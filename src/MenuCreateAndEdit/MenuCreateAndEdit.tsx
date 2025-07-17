@@ -281,7 +281,7 @@ const MenuCreateAndEdit: React.FC<MenuCreateAndEditProps> = ({
           })}
         </Container>
 
-        <Navbar sticky="bottom">
+        <Navbar fixed="bottom">
           <Container>
             <Button
               variant="secondary"
