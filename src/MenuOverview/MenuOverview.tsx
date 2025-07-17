@@ -6,7 +6,10 @@ import Button from "react-bootstrap/Button";
 import "./MenuOverview.css";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import Stack from 'react-bootstrap/Stack'
+import Stack from "react-bootstrap/Stack";
+import { useQuery } from "@tanstack/react-query";
+import type { Brand } from "./menuOverviewTypes";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 /**
  * Loads and displays existing menus found in a Solid Pod.
@@ -14,10 +17,178 @@ import Stack from 'react-bootstrap/Stack'
 const MenuOverview: React.FC = () => {
   const intl = useIntl();
 
+  const menuDataQuery = useQuery({
+    queryKey: ["getMenuDataFromSolidPod"],
+    queryFn: fetchMenuData,
+  });
+
+  /**
+   * Retrieves existing menu information.
+   */
+  async function fetchMenuData() {
+    const mockedBrand: Brand = {
+      logo: "https://example.com/logos/eurodeli.png",
+      name: "EuroDeli",
+      outlets: [
+        {
+          address: "Via Roma 12, 00185 Rome, Italy",
+          openingHours: "Mon–Sun 11:30–22:30",
+          menus: [
+            {
+              title: "Main Menu",
+              availability: "All day",
+              description:
+                "Traditional European dishes made with fresh local ingredients.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Hot Dishes",
+                  menuItems: [
+                    {
+                      title: "Lasagna Bolognese",
+                      description:
+                        "Layers of fresh pasta with meat ragù, béchamel, and parmesan cheese.",
+                      visibility: true,
+                      price: 12.5,
+                      image: "https://example.com/images/lasagna.jpg",
+                      allergens: ["gluten", "dairy"],
+                      suitableForDiets: ["omnivore"],
+                      ingredients: [
+                        "pasta",
+                        "meat ragù",
+                        "béchamel",
+                        "parmesan",
+                      ],
+                      servingSize: 300,
+                      calories: 780,
+                      nationalCuisines: ["Italian"],
+                      preparationMethods: ["baked"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          address: "Karl-Liebknecht-Straße 9, 10178 Berlin, Germany",
+          openingHours: "Mon–Sun 10:00–21:00",
+          menus: [
+            {
+              title: "Main Menu",
+              availability: "All day",
+              description:
+                "Homestyle meals inspired by traditional European cuisine.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Vegetarian",
+                  menuItems: [
+                    {
+                      title: "Potato Pancakes with Applesauce",
+                      description:
+                        "Crispy fried potato pancakes served with sweet applesauce.",
+                      visibility: true,
+                      price: 7.2,
+                      image: "https://example.com/images/kartoffelpuffer.jpg",
+                      allergens: ["egg"],
+                      suitableForDiets: ["vegetarian"],
+                      ingredients: ["potatoes", "egg", "oil", "applesauce"],
+                      servingSize: 200,
+                      calories: 520,
+                      nationalCuisines: ["German"],
+                      preparationMethods: ["fried"],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          address: "Carrer de Mallorca, 45, 08029 Barcelona, Spain",
+          openingHours: "Mon–Sun 12:00–23:00",
+          menus: [
+            {
+              title: "Main Menu",
+              availability: "All day",
+              description:
+                "Fresh Mediterranean tapas and classic Spanish dishes.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  title: "Tapas",
+                  menuItems: [
+                    {
+                      title: "Patatas Bravas",
+                      description:
+                        "Fried potatoes served with spicy brava sauce and aioli.",
+                      visibility: true,
+                      price: 5.5,
+                      image: "https://example.com/images/patatas-bravas.jpg",
+                      allergens: ["egg", "garlic"],
+                      suitableForDiets: ["vegetarian"],
+                      ingredients: ["potatoes", "brava sauce", "aioli"],
+                      servingSize: 180,
+                      calories: 430,
+                      nationalCuisines: ["Spanish"],
+                      preparationMethods: ["fried"],
+                      spicinessLevel: "Medium",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    return mockedBrand;
+  }
+
   return (
-    <div
-      style={{ height: "100dvh", backgroundColor: "#FAFAFA" }}
-    >
+    <div style={{ height: "100dvh", backgroundColor: "#FAFAFA" }}>
+      <Offcanvas show={false} placement="end" style={{ maxWidth: "200px" }}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>
+            <FormattedMessage id="settings" defaultMessage="Settings" />
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+
+        <button className="offcanvas-item-button text-start position-relative">
+          <img
+            src="images/gear.svg"
+            alt="Settings icon"
+            className="offcanvas-item-button-icon position-absolute"
+          />
+
+          <span className="ms-5">
+            <FormattedMessage
+              id="brandSettings"
+              defaultMessage="Brand settings"
+            />
+          </span>
+        </button>
+
+        <button className="offcanvas-item-button text-start position-relative">
+          <img
+            src="images/box-arrow-right.svg"
+            alt="Sign out icon"
+            className="offcanvas-item-button-icon position-absolute"
+          />
+
+          <span className="ms-5 text-danger">
+            <FormattedMessage id="signOut" defaultMessage="Sign out" />
+          </span>
+        </button>
+      </Offcanvas>
+
       <Container fluid>
         <Row
           className="sticky-top align-items-center"

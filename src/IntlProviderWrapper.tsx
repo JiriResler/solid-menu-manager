@@ -190,6 +190,8 @@ type Messages = {
   nationalCuisines: string
   cookingMethods: string
   spicinessLevel: string
+  brandSettings: string
+  settings: string
 }
 
 const messagesInSlovak: Messages = {
@@ -397,6 +399,8 @@ const messagesInSlovak: Messages = {
   nationalCuisines: 'Národné kuchyne',
   cookingMethods: 'Spôsoby prípravy',
   spicinessLevel: 'Úroveň ostrosti',
+  brandSettings: 'Nastavenia',
+  settings: 'Nastavenia značky',
 }
 
 const IntlProviderWrapper: React.FC<PropsWithChildren> = (props) => {
