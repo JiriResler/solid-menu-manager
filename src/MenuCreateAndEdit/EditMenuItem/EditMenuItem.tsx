@@ -288,7 +288,7 @@ const EditMenuItem: React.FC<EditMenuItemProps> = ({
         </Stack>
       </Container>
 
-      <Navbar sticky="bottom">
+      <Navbar fixed="bottom">
         <Container>
           <Button
             variant="secondary"
