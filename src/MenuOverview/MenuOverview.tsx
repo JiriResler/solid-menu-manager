@@ -51,20 +51,20 @@ const MenuOverview: React.FC = () => {
   async function fetchMenuData() {
     const mockedBrand: Brand = {
       iri: "https://example.com/brand/farm-table",
-      name: "Farm & Table",
-      logo: "",
+      name: "Terrace Restaurant",
+      logo: "images/terrace-restaurant-logo.svg",
       slogan: "From local fields to your plate.",
       outlets: [
         {
           iri: "https://example.com/outlet/berlin-mitte",
-          name: "Farm & Table – Berlin",
+          name: "Terrace Restaurant Berlin",
           address: "Friedrichstraße 120, 10117 Berlin, Germany",
-          openingHours: "Mon–Sun 08:00–22:00",
+          openingHours: "Mon-Sun 08:00-22:00",
           menus: [
             {
               iri: "https://example.com/menu/lunch",
               title: "Lunch Menu",
-              availability: "Mon–Fri 11:00–15:00",
+              availability: "Mon-Fri 11:00-15:00",
               description: "Fresh and balanced dishes to power your workday.",
               visibility: true,
               currency: "EUR",
@@ -80,7 +80,7 @@ const MenuOverview: React.FC = () => {
                         "Slow-roasted tomatoes with basil oil and toasted rye.",
                       visibility: true,
                       price: 6.5,
-                      image: "",
+                      image: "images/roasted-tomato-soup.png",
                       allergens: [
                         {
                           label: "Gluten",
@@ -123,6 +123,56 @@ const MenuOverview: React.FC = () => {
                       ],
                       spicinessLevel: "Mild",
                     },
+                    {
+                      iri: "https://example.com/menu-item/miso-soup",
+                      title: "Miso Soup",
+                      description:
+                        "Classic Japanese broth with tofu, seaweed, and scallions.",
+                      visibility: true,
+                      price: 5.0,
+                      image: "images/miso-soup.jpg",
+                      allergens: [
+                        {
+                          label: "Soy",
+                          iri: "http://example.com/allergen/soy",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Miso",
+                          iri: "http://example.com/ingredient/miso",
+                        },
+                        {
+                          label: "Tofu",
+                          iri: "http://example.com/ingredient/tofu",
+                        },
+                        {
+                          label: "Seaweed",
+                          iri: "http://example.com/ingredient/seaweed",
+                        },
+                      ],
+                      servingSize: 250,
+                      calories: 120,
+                      nationalCuisines: [
+                        {
+                          label: "Japanese",
+                          iri: "http://example.com/cuisine/japanese",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Simmered",
+                          iri: "http://example.com/prep/simmered",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
                   ],
                 },
                 {
@@ -136,7 +186,7 @@ const MenuOverview: React.FC = () => {
                         "Black bean patty, avocado, and house-made pickles.",
                       visibility: true,
                       price: 10.5,
-                      image: "",
+                      image: "images/grilled-veggie-burger.png",
                       allergens: [
                         {
                           label: "Gluten",
@@ -183,6 +233,318 @@ const MenuOverview: React.FC = () => {
                       ],
                       spicinessLevel: "Medium",
                     },
+                    {
+                      iri: "https://example.com/menu-item/chicken-quinoa-bowl",
+                      title: "Chicken Quinoa Bowl",
+                      description:
+                        "Grilled chicken over quinoa, spinach, and hummus dressing.",
+                      visibility: true,
+                      price: 11.0,
+                      image: "images/chicken-quinoa-bowl.jpg",
+                      allergens: [],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Chicken",
+                          iri: "http://example.com/ingredient/chicken",
+                        },
+                        {
+                          label: "Quinoa",
+                          iri: "http://example.com/ingredient/quinoa",
+                        },
+                        {
+                          label: "Spinach",
+                          iri: "http://example.com/ingredient/spinach",
+                        },
+                      ],
+                      servingSize: 400,
+                      calories: 550,
+                      nationalCuisines: [
+                        {
+                          label: "Mediterranean",
+                          iri: "http://example.com/cuisine/mediterranean",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Grilled",
+                          iri: "http://example.com/prep/grilled",
+                        },
+                      ],
+                      spicinessLevel: "Mild",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/lentil-curry-bowl",
+                      title: "Spiced Lentil Curry Bowl",
+                      description:
+                        "Slow-cooked red lentils in aromatic spices served with basmati rice and coriander.",
+                      visibility: true,
+                      price: 9.0,
+                      image: "images/spiced-lentil-curry-bowl.jpg",
+                      allergens: [],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Lentils",
+                          iri: "http://example.com/ingredient/lentils",
+                        },
+                        {
+                          label: "Coriander",
+                          iri: "http://example.com/ingredient/coriander",
+                        },
+                        {
+                          label: "Turmeric",
+                          iri: "http://example.com/ingredient/turmeric",
+                        },
+                      ],
+                      servingSize: 380,
+                      calories: 490,
+                      nationalCuisines: [
+                        {
+                          label: "Indian",
+                          iri: "http://example.com/cuisine/indian",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Simmered",
+                          iri: "http://example.com/prep/simmered",
+                        },
+                      ],
+                      spicinessLevel: "Hot",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/salmon-teriyaki",
+                      title: "Teriyaki Glazed Salmon",
+                      description:
+                        "Oven-roasted salmon glazed in teriyaki sauce with steamed broccoli and jasmine rice.",
+                      visibility: true,
+                      price: 13.5,
+                      image: "images/teriyaki-glazed-salmon.jpg",
+                      allergens: [
+                        {
+                          label: "Soy",
+                          iri: "http://example.com/allergen/soy",
+                        },
+                        {
+                          label: "Fish",
+                          iri: "http://example.com/allergen/fish",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Salmon",
+                          iri: "http://example.com/ingredient/salmon",
+                        },
+                        {
+                          label: "Teriyaki sauce",
+                          iri: "http://example.com/ingredient/teriyaki",
+                        },
+                        {
+                          label: "Broccoli",
+                          iri: "http://example.com/ingredient/broccoli",
+                        },
+                      ],
+                      servingSize: 420,
+                      calories: 670,
+                      nationalCuisines: [
+                        {
+                          label: "Japanese",
+                          iri: "http://example.com/cuisine/japanese",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Roasted",
+                          iri: "http://example.com/prep/roasted",
+                        },
+                        {
+                          label: "Glazed",
+                          iri: "http://example.com/prep/glazed",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                  ],
+                },
+                {
+                  iri: "https://example.com/menu-category/salads",
+                  title: "Salads",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/greek-salad",
+                      title: "Greek Salad",
+                      description:
+                        "Crisp vegetables, feta cheese, olives, and oregano dressing.",
+                      visibility: true,
+                      price: 7.5,
+                      image: "images/greek-salad.png",
+                      allergens: [
+                        {
+                          label: "Milk",
+                          iri: "http://example.com/allergen/dairy",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Feta",
+                          iri: "http://example.com/ingredient/feta",
+                        },
+                        {
+                          label: "Cucumber",
+                          iri: "http://example.com/ingredient/cucumber",
+                        },
+                        {
+                          label: "Tomato",
+                          iri: "http://example.com/ingredient/tomato",
+                        },
+                        {
+                          label: "Olives",
+                          iri: "http://example.com/ingredient/olives",
+                        },
+                      ],
+                      servingSize: 350,
+                      calories: 320,
+                      nationalCuisines: [
+                        {
+                          label: "Greek",
+                          iri: "http://example.com/cuisine/greek",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Fresh",
+                          iri: "http://example.com/prep/fresh",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/quinoa-avocado-salad",
+                      title: "Quinoa & Avocado Salad",
+                      description:
+                        "Protein-rich quinoa with avocado, cherry tomatoes, and lemon vinaigrette.",
+                      visibility: true,
+                      price: 8.0,
+                      image: "images/quinoa-avocado-salad.jpg",
+                      allergens: [],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                        {
+                          label: "Gluten-Free",
+                          iri: "http://example.com/diet/gluten-free",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Quinoa",
+                          iri: "http://example.com/ingredient/quinoa",
+                        },
+                        {
+                          label: "Avocado",
+                          iri: "http://example.com/ingredient/avocado",
+                        },
+                        {
+                          label: "Cherry tomatoes",
+                          iri: "http://example.com/ingredient/cherry-tomatoes",
+                        },
+                        {
+                          label: "Lemon juice",
+                          iri: "http://example.com/ingredient/lemon-juice",
+                        },
+                      ],
+                      servingSize: 360,
+                      calories: 390,
+                      nationalCuisines: [
+                        {
+                          label: "Modern European",
+                          iri: "http://example.com/cuisine/modern-european",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Fresh",
+                          iri: "http://example.com/prep/fresh",
+                        },
+                        {
+                          label: "Tossed",
+                          iri: "http://example.com/prep/tossed",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/thai-beef-salad",
+                      title: "Thai Beef Salad",
+                      description:
+                        "Sliced marinated beef on a bed of herbs, cucumber, and chili-lime dressing.",
+                      visibility: true,
+                      price: 9.5,
+                      image: "images/thai-beef-salad.jpg",
+                      allergens: [
+                        {
+                          label: "Soy",
+                          iri: "http://example.com/allergen/soy",
+                        },
+                        {
+                          label: "Fish",
+                          iri: "http://example.com/allergen/fish",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Beef",
+                          iri: "http://example.com/ingredient/beef",
+                        },
+                        {
+                          label: "Mint",
+                          iri: "http://example.com/ingredient/mint",
+                        },
+                        {
+                          label: "Cucumber",
+                          iri: "http://example.com/ingredient/cucumber",
+                        },
+                        {
+                          label: "Chili",
+                          iri: "http://example.com/ingredient/chili",
+                        },
+                      ],
+                      servingSize: 370,
+                      calories: 460,
+                      nationalCuisines: [
+                        {
+                          label: "Thai",
+                          iri: "http://example.com/cuisine/thai",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Grilled",
+                          iri: "http://example.com/prep/grilled",
+                        },
+                        {
+                          label: "Tossed",
+                          iri: "http://example.com/prep/tossed",
+                        },
+                      ],
+                      spicinessLevel: "Hot",
+                    },
                   ],
                 },
               ],
@@ -190,7 +552,770 @@ const MenuOverview: React.FC = () => {
             {
               iri: "https://example.com/menu/dinner",
               title: "Dinner Menu",
-              availability: "Tue–Sun 17:00–22:00",
+              availability: "Tue-Sun 17:00-22:00",
+              description:
+                "Elegant dishes featuring locally sourced ingredients.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  iri: "https://example.com/menu-category/pasta",
+                  title: "Pasta",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/tagliatelle-ragu",
+                      title: "Tagliatelle al Ragù",
+                      description:
+                        "Fresh tagliatelle with slow-cooked beef and pork ragù.",
+                      visibility: true,
+                      price: 13.0,
+                      image: "images/tagliatelle-al-ragu.png",
+                      allergens: [
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Tagliatelle",
+                          iri: "http://example.com/ingredient/tagliatelle",
+                        },
+                        {
+                          label: "Beef",
+                          iri: "http://example.com/ingredient/beef",
+                        },
+                        {
+                          label: "Pork",
+                          iri: "http://example.com/ingredient/pork",
+                        },
+                      ],
+                      servingSize: 400,
+                      calories: 720,
+                      nationalCuisines: [
+                        {
+                          label: "Italian",
+                          iri: "http://example.com/cuisine/italian",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Simmered",
+                          iri: "http://example.com/prep/simmered",
+                        },
+                      ],
+                      spicinessLevel: "Mild",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/mushroom-risotto",
+                      title: "Porcini Mushroom Risotto",
+                      description:
+                        "Creamy carnaroli rice with porcini mushrooms and parmesan.",
+                      visibility: true,
+                      price: 12.5,
+                      image: "images/porcini-mushroom-risotto.png",
+                      allergens: [
+                        {
+                          label: "Milk",
+                          iri: "http://example.com/allergen/milk",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Porcini",
+                          iri: "http://example.com/ingredient/porcini",
+                        },
+                        {
+                          label: "Rice",
+                          iri: "http://example.com/ingredient/carnaroli-rice",
+                        },
+                        {
+                          label: "Parmesan",
+                          iri: "http://example.com/ingredient/parmesan",
+                        },
+                      ],
+                      servingSize: 380,
+                      calories: 600,
+                      nationalCuisines: [
+                        {
+                          label: "Italian",
+                          iri: "http://example.com/cuisine/italian",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Simmered",
+                          iri: "http://example.com/prep/simmered",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                  ],
+                },
+                {
+                  iri: "https://example.com/menu-category/mains",
+                  title: "Mains",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/lamb-rack",
+                      title: "Herb-Crusted Lamb Rack",
+                      description:
+                        "Local lamb with rosemary crust, garlic mash, and red wine jus.",
+                      visibility: true,
+                      price: 19.5,
+                      image: "images/herb-crusted-lamb-rack.jpg",
+                      allergens: [],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Lamb",
+                          iri: "http://example.com/ingredient/lamb",
+                        },
+                        {
+                          label: "Rosemary",
+                          iri: "http://example.com/ingredient/rosemary",
+                        },
+                        {
+                          label: "Garlic",
+                          iri: "http://example.com/ingredient/garlic",
+                        },
+                      ],
+                      servingSize: 450,
+                      calories: 850,
+                      nationalCuisines: [
+                        {
+                          label: "French",
+                          iri: "http://example.com/cuisine/french",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Roasted",
+                          iri: "http://example.com/prep/roasted",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/seared-seabass",
+                      title: "Seared Sea Bass",
+                      description:
+                        "Crispy sea bass with fennel purée and citrus glaze.",
+                      visibility: true,
+                      price: 17.0,
+                      image: "images/seared-sea-bass.png",
+                      allergens: [
+                        {
+                          label: "Fish",
+                          iri: "http://example.com/allergen/fish",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Sea bass",
+                          iri: "http://example.com/ingredient/seabass",
+                        },
+                        {
+                          label: "Fennel",
+                          iri: "http://example.com/ingredient/fennel",
+                        },
+                        {
+                          label: "Lemon",
+                          iri: "http://example.com/ingredient/lemon",
+                        },
+                      ],
+                      servingSize: 400,
+                      calories: 620,
+                      nationalCuisines: [
+                        {
+                          label: "Mediterranean",
+                          iri: "http://example.com/cuisine/mediterranean",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Seared",
+                          iri: "http://example.com/prep/seared",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/duck-confit",
+                      title: "Duck Confit with Lentils",
+                      description:
+                        "Slow-cooked duck leg served over green lentils and caramelized shallots.",
+                      visibility: true,
+                      price: 18.5,
+                      image: "images/duck-confit-with-lentils.jpg",
+                      allergens: [],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Duck leg",
+                          iri: "http://example.com/ingredient/duck",
+                        },
+                        {
+                          label: "Lentils",
+                          iri: "http://example.com/ingredient/lentils",
+                        },
+                        {
+                          label: "Shallots",
+                          iri: "http://example.com/ingredient/shallots",
+                        },
+                      ],
+                      servingSize: 430,
+                      calories: 780,
+                      nationalCuisines: [
+                        {
+                          label: "French",
+                          iri: "http://example.com/cuisine/french",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Confit",
+                          iri: "http://example.com/prep/confit",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/stuffed-peppers",
+                      title: "Stuffed Bell Peppers",
+                      description:
+                        "Roasted bell peppers filled with quinoa, chickpeas, and herbs.",
+                      visibility: true,
+                      price: 14.0,
+                      image: "images/stuffed-bell-peppers.jpg",
+                      allergens: [],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                        {
+                          label: "Gluten-Free",
+                          iri: "http://example.com/diet/gluten-free",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Bell peppers",
+                          iri: "http://example.com/ingredient/bell-pepper",
+                        },
+                        {
+                          label: "Quinoa",
+                          iri: "http://example.com/ingredient/quinoa",
+                        },
+                        {
+                          label: "Chickpeas",
+                          iri: "http://example.com/ingredient/chickpeas",
+                        },
+                      ],
+                      servingSize: 410,
+                      calories: 540,
+                      nationalCuisines: [
+                        {
+                          label: "Mediterranean",
+                          iri: "http://example.com/cuisine/mediterranean",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Baked",
+                          iri: "http://example.com/prep/baked",
+                        },
+                      ],
+                      spicinessLevel: "Mild",
+                    },
+                  ],
+                },
+
+                {
+                  iri: "https://example.com/menu-category/desserts",
+                  title: "Desserts",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/tiramisu",
+                      title: "Classic Tiramisu",
+                      description:
+                        "Mascarpone cream, espresso-soaked ladyfingers, cocoa.",
+                      visibility: true,
+                      price: 6.5,
+                      image: "images/classic-tiramisu.jpg",
+                      allergens: [
+                        {
+                          label: "Milk",
+                          iri: "http://example.com/allergen/milk",
+                        },
+                        {
+                          label: "Eggs",
+                          iri: "http://example.com/allergen/eggs",
+                        },
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Mascarpone",
+                          iri: "http://example.com/ingredient/mascarpone",
+                        },
+                        {
+                          label: "Espresso",
+                          iri: "http://example.com/ingredient/espresso",
+                        },
+                        {
+                          label: "Ladyfingers",
+                          iri: "http://example.com/ingredient/ladyfingers",
+                        },
+                      ],
+                      servingSize: 220,
+                      calories: 510,
+                      nationalCuisines: [
+                        {
+                          label: "Italian",
+                          iri: "http://example.com/cuisine/italian",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Chilled",
+                          iri: "http://example.com/prep/chilled",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/poached-pears",
+                      title: "Poached Pears in Red Wine",
+                      description:
+                        "Spiced red wine reduction with soft pear and orange zest.",
+                      visibility: true,
+                      price: 6.0,
+                      image: "images/poached-pears-in-red-wine.jpg",
+                      allergens: [],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Pear",
+                          iri: "http://example.com/ingredient/pear",
+                        },
+                        {
+                          label: "Red wine",
+                          iri: "http://example.com/ingredient/red-wine",
+                        },
+                        {
+                          label: "Cinnamon",
+                          iri: "http://example.com/ingredient/cinnamon",
+                        },
+                      ],
+                      servingSize: 200,
+                      calories: 330,
+                      nationalCuisines: [
+                        {
+                          label: "French",
+                          iri: "http://example.com/cuisine/french",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Poached",
+                          iri: "http://example.com/prep/poached",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              iri: "https://example.com/menu/weekend-brunch",
+              title: "Weekend Brunch",
+              availability: "Sat-Sun 10:00-14:00",
+              description: "Relax and refuel with our weekend brunch specials.",
+              visibility: true,
+              currency: "EUR",
+              categories: [
+                {
+                  iri: "https://example.com/menu-category/breakfast-bowls",
+                  title: "Breakfast Bowls",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/granola-bowl",
+                      title: "Berry Granola Bowl",
+                      description:
+                        "Crunchy granola with Greek yogurt and seasonal berries.",
+                      visibility: true,
+                      price: 6.8,
+                      image: "images/berry-granola-bowl.jpg",
+                      allergens: [
+                        {
+                          label: "Milk",
+                          iri: "http://example.com/allergen/milk",
+                        },
+                        {
+                          label: "Nuts",
+                          iri: "http://example.com/allergen/nuts",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Yogurt",
+                          iri: "http://example.com/ingredient/yogurt",
+                        },
+                        {
+                          label: "Granola",
+                          iri: "http://example.com/ingredient/granola",
+                        },
+                        {
+                          label: "Berries",
+                          iri: "http://example.com/ingredient/berries",
+                        },
+                      ],
+                      servingSize: 280,
+                      calories: 410,
+                      nationalCuisines: [
+                        {
+                          label: "Continental",
+                          iri: "http://example.com/cuisine/continental",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Chilled",
+                          iri: "http://example.com/prep/chilled",
+                        },
+                      ],
+                      spicinessLevel: "Not at all",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/smoothie-bowl",
+                      title: "Tropical Smoothie Bowl",
+                      description:
+                        "Banana, mango & coconut smoothie topped with kiwi, chia seeds, and toasted coconut flakes.",
+                      visibility: true,
+                      price: 7.2,
+                      image: "images/tropical-smoothie-bowl.jpg",
+                      allergens: [
+                        {
+                          label: "Nuts",
+                          iri: "http://example.com/allergen/nuts",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegan",
+                          iri: "http://example.com/diet/vegan",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Banana",
+                          iri: "http://example.com/ingredient/banana",
+                        },
+                        {
+                          label: "Mango",
+                          iri: "http://example.com/ingredient/mango",
+                        },
+                        {
+                          label: "Coconut Milk",
+                          iri: "http://example.com/ingredient/coconut-milk",
+                        },
+                        {
+                          label: "Kiwi",
+                          iri: "http://example.com/ingredient/kiwi",
+                        },
+                        {
+                          label: "Chia Seeds",
+                          iri: "http://example.com/ingredient/chia-seeds",
+                        },
+                      ],
+                      servingSize: 300,
+                      calories: 380,
+                      nationalCuisines: [
+                        {
+                          label: "Fusion",
+                          iri: "http://example.com/cuisine/fusion",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Blended",
+                          iri: "http://example.com/prep/blended",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                  ],
+                },
+                {
+                  iri: "https://example.com/menu-category/eggs-and-toast",
+                  title: "Eggs & Toast",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/scrambled-eggs-toast",
+                      title: "Scrambled Eggs on Rye",
+                      description:
+                        "Creamy scrambled eggs served over warm rye toast with chives and cracked pepper.",
+                      visibility: true,
+                      price: 7.5,
+                      image: "images/scrambled-eggs-on-rye.jpg",
+                      allergens: [
+                        {
+                          label: "Eggs",
+                          iri: "http://example.com/allergen/eggs",
+                        },
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Egg",
+                          iri: "http://example.com/ingredient/egg",
+                        },
+                        {
+                          label: "Rye Bread",
+                          iri: "http://example.com/ingredient/rye-bread",
+                        },
+                        {
+                          label: "Chives",
+                          iri: "http://example.com/ingredient/chives",
+                        },
+                      ],
+                      servingSize: 280,
+                      calories: 460,
+                      nationalCuisines: [
+                        {
+                          label: "Scandinavian",
+                          iri: "http://example.com/cuisine/scandinavian",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Scrambled",
+                          iri: "http://example.com/prep/scrambled",
+                        },
+                        {
+                          label: "Toasted",
+                          iri: "http://example.com/prep/toasted",
+                        },
+                      ],
+                      spicinessLevel: "None",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/avocado-toast",
+                      title: "Avocado Toast",
+                      description:
+                        "Sourdough toast with smashed avocado, chili flakes, and poached egg.",
+                      visibility: true,
+                      price: 8.0,
+                      image: "images/avocado-toast.jpg",
+                      allergens: [
+                        {
+                          label: "Eggs",
+                          iri: "http://example.com/allergen/eggs",
+                        },
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
+                        },
+                      ],
+                      suitableForDiets: [
+                        {
+                          label: "Vegetarian",
+                          iri: "http://example.com/diet/vegetarian",
+                        },
+                      ],
+                      ingredients: [
+                        {
+                          label: "Avocado",
+                          iri: "http://example.com/ingredient/avocado",
+                        },
+                        {
+                          label: "Egg",
+                          iri: "http://example.com/ingredient/egg",
+                        },
+                        {
+                          label: "Sourdough Bread",
+                          iri: "http://example.com/ingredient/sourdough",
+                        },
+                      ],
+                      servingSize: 300,
+                      calories: 500,
+                      nationalCuisines: [
+                        {
+                          label: "Modern European",
+                          iri: "http://example.com/cuisine/modern-european",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Toasted",
+                          iri: "http://example.com/prep/toasted",
+                        },
+                      ],
+                      spicinessLevel: "Mild",
+                    },
+                  ],
+                },
+                {
+                  iri: "https://example.com/menu-category/sweet-treats",
+                  title: "Sweet Treats",
+                  menuItems: [
+                    {
+                      iri: "https://example.com/menu-item/pancakes-maple",
+                      title: "Buttermilk Pancakes",
+                      description:
+                        "Fluffy pancakes with maple syrup and butter.",
+                      visibility: true,
+                      price: 7.5,
+                      image: "images/buttermilk-pancakes.png",
+                      allergens: [
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
+                        },
+                        {
+                          label: "Milk",
+                          iri: "http://example.com/allergen/milk",
+                        },
+                        {
+                          label: "Eggs",
+                          iri: "http://example.com/allergen/eggs",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Flour",
+                          iri: "http://example.com/ingredient/flour",
+                        },
+                        {
+                          label: "Maple Syrup",
+                          iri: "http://example.com/ingredient/maple-syrup",
+                        },
+                        {
+                          label: "Butter",
+                          iri: "http://example.com/ingredient/butter",
+                        },
+                      ],
+                      servingSize: 320,
+                      calories: 620,
+                      nationalCuisines: [
+                        {
+                          label: "American",
+                          iri: "http://example.com/cuisine/american",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Griddled",
+                          iri: "http://example.com/prep/griddled",
+                        },
+                      ],
+                      spicinessLevel: "Not at all",
+                    },
+                    {
+                      iri: "https://example.com/menu-item/french-toast",
+                      title: "Brioche French Toast",
+                      description:
+                        "Golden brioche slices soaked in vanilla custard, topped with berries and powdered sugar.",
+                      visibility: true,
+                      price: 8.2,
+                      image: "images/brioche-french-toast.jpg",
+                      allergens: [
+                        {
+                          label: "Gluten",
+                          iri: "http://example.com/allergen/gluten",
+                        },
+                        {
+                          label: "Milk",
+                          iri: "http://example.com/allergen/milk",
+                        },
+                        {
+                          label: "Eggs",
+                          iri: "http://example.com/allergen/eggs",
+                        },
+                      ],
+                      suitableForDiets: [],
+                      ingredients: [
+                        {
+                          label: "Brioche",
+                          iri: "http://example.com/ingredient/brioche",
+                        },
+                        {
+                          label: "Egg",
+                          iri: "http://example.com/ingredient/egg",
+                        },
+                        {
+                          label: "Berries",
+                          iri: "http://example.com/ingredient/berries",
+                        },
+                      ],
+                      servingSize: 300,
+                      calories: 580,
+                      nationalCuisines: [
+                        {
+                          label: "French",
+                          iri: "http://example.com/cuisine/french",
+                        },
+                      ],
+                      preparationMethods: [
+                        {
+                          label: "Pan-fried",
+                          iri: "http://example.com/prep/pan-fried",
+                        },
+                      ],
+                      spicinessLevel: "Not at all",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          iri: "https://example.com/outlet/paris-le-marais",
+          name: "Terrace Restaurant Paris",
+          address: "Rue Vieille du Temple 45, 75004 Paris, France",
+          openingHours: "Tue-Sun 09:00-23:00",
+          menus: [
+            {
+              iri: "https://example.com/menu/dinner",
+              title: "Dinner Menu",
+              availability: "Tue-Sun 17:00-22:00",
               description:
                 "Elegant dishes featuring locally sourced ingredients.",
               visibility: true,
@@ -251,88 +1376,18 @@ const MenuOverview: React.FC = () => {
                 },
               ],
             },
-            {
-              iri: "https://example.com/menu/weekend-brunch",
-              title: "Weekend Brunch",
-              availability: "Sat–Sun 10:00–14:00",
-              description: "Relax and refuel with our weekend brunch specials.",
-              visibility: true,
-              currency: "EUR",
-              categories: [
-                {
-                  iri: "https://example.com/menu-category/breakfast-bowls",
-                  title: "Breakfast Bowls",
-                  menuItems: [
-                    {
-                      iri: "https://example.com/menu-item/granola-bowl",
-                      title: "Berry Granola Bowl",
-                      description:
-                        "Crunchy granola with Greek yogurt and seasonal berries.",
-                      visibility: true,
-                      price: 6.8,
-                      image: "",
-                      allergens: [
-                        {
-                          label: "Dairy",
-                          iri: "http://example.com/allergen/dairy",
-                        },
-                        {
-                          label: "Nuts",
-                          iri: "http://example.com/allergen/nuts",
-                        },
-                      ],
-                      suitableForDiets: [
-                        {
-                          label: "Vegetarian",
-                          iri: "http://example.com/diet/vegetarian",
-                        },
-                      ],
-                      ingredients: [
-                        {
-                          label: "Yogurt",
-                          iri: "http://example.com/ingredient/yogurt",
-                        },
-                        {
-                          label: "Granola",
-                          iri: "http://example.com/ingredient/granola",
-                        },
-                        {
-                          label: "Berries",
-                          iri: "http://example.com/ingredient/berries",
-                        },
-                      ],
-                      servingSize: 280,
-                      calories: 410,
-                      nationalCuisines: [
-                        {
-                          label: "Continental",
-                          iri: "http://example.com/cuisine/continental",
-                        },
-                      ],
-                      preparationMethods: [
-                        {
-                          label: "Chilled",
-                          iri: "http://example.com/prep/chilled",
-                        },
-                      ],
-                      spicinessLevel: "Not at all",
-                    },
-                  ],
-                },
-              ],
-            },
           ],
         },
         {
           iri: "https://example.com/outlet/paris-le-marais",
-          name: "Farm & Table – Le Marais",
-          address: "Rue Vieille du Temple 45, 75004 Paris, France",
-          openingHours: "Tue–Sun 09:00–23:00",
+          name: "Terrace Restaurant Rome",
+          address: "Via delle Terme, 42, 00184 Roma RM, Italy",
+          openingHours: "Tue-Sun 08:00-22:00",
           menus: [
             {
               iri: "https://example.com/menu/dinner",
               title: "Dinner Menu",
-              availability: "Tue–Sun 17:00–22:00",
+              availability: "Tue-Sun 17:00-22:00",
               description:
                 "Elegant dishes featuring locally sourced ingredients.",
               visibility: true,
